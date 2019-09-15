@@ -10,11 +10,11 @@ module Processor (input logic   Clk,     // Internal
                                 LoadA,   // Push button 1
                                 LoadB,   // Push button 2
                                 Execute, // Push button 3
-                  input  logic [3:0]  Din,     // input data
+                  input  logic [7:0]  Din,     // input data
                   input  logic [2:0]  F,       // Function select
                   input  logic [1:0]  R,       // Routing select
                   output logic [3:0]  LED,     // DEBUG
-                  output logic [3:0]  Aval,    // DEBUG
+                  output logic [7:0]  Aval,    // DEBUG
                                 Bval,    // DEBUG
                   output logic [6:0]  AhexL,
                                 AhexU,
@@ -25,9 +25,9 @@ module Processor (input logic   Clk,     // Internal
 	 logic Reset_SH, LoadA_SH, LoadB_SH, Execute_SH;
 	 logic [2:0] F_S;
 	 logic [1:0] R_S;
-	 logic Ld_A, Ld_B, newA, newB, opA, opB, bitA, bitB, Shift_En,
+	 logic Ld_A, Ld_B, newA, newB, opA, opB, shA, shB, bitA, bitB, Shift_En,
 	       F_A_B;
-	 logic [3:0] A, B, Din_S;
+	 logic [7:0] A, B, Din_S;
 	 
 	 
 	 //We can use the "assign" statement to do simple combinational logic
@@ -36,19 +36,33 @@ module Processor (input logic   Clk,     // Internal
 	 assign LED = {Execute_SH,LoadA_SH,LoadB_SH,Reset_SH}; //Concatenate is a common operation in HDL
 	 
 	 //Instantiation of modules here
-	 register_unit    reg_unit (
+	 register_unit    reg_unit_high (
                         .Clk(Clk),
                         .Reset(Reset_SH),
                         .Ld_A, //note these are inferred assignments, because of the existence a logic variable of the same name
                         .Ld_B,
                         .Shift_En,
-                        .D(Din_S),
+                        .D(Din_S[7:4]),
                         .A_In(newA),
                         .B_In(newB),
+                        .A_out(shA),
+                        .B_out(shB),
+                        .A(A[7:4]),
+                        .B(B[7:4]));
+	 // addding an additional two 4-bit register units to hold the lower bits of each value
+	 register_unit    reg_unit_low (
+                        .Clk(Clk),
+                        .Reset(Reset_SH),
+                        .Ld_A, //note these are inferred assignments, because of the existence a logic variable of the same name
+                        .Ld_B,
+                        .Shift_En,
+                        .D(Din_S[3:0]),
+                        .A_In(shA),
+                        .B_In(shB),
                         .A_out(opA),
                         .B_out(opB),
-                        .A(A),
-                        .B(B) );
+                        .A(A[3:0]),
+                        .B(B[3:0]));
     compute          compute_unit (
 								.F(F_S),
                         .A_In(opA),
@@ -81,10 +95,10 @@ module Processor (input logic   Clk,     // Internal
 								
 	 //When you extend to 8-bits, you will need more HEX drivers to view upper nibble of registers, for now set to 0
 	 HexDriver        HexAU (
-                        .In0(4'h0),
+                        .In0(A[7:4]),
                         .Out0(AhexU) );	
 	 HexDriver        HexBU (
-                       .In0(4'h0),
+                       .In0(B[7:4]),
                         .Out0(BhexU) );
 								
 	  //Input synchronizers required for asynchronous inputs (in this case, from the switches)
@@ -92,7 +106,8 @@ module Processor (input logic   Clk,     // Internal
 	  //Note: S stands for SYNCHRONIZED, H stands for active HIGH
 	  //Note: We can invert the levels inside the port assignments
 	  sync button_sync[3:0] (Clk, {~Reset, ~LoadA, ~LoadB, ~Execute}, {Reset_SH, LoadA_SH, LoadB_SH, Execute_SH});
-	  sync Din_sync[3:0] (Clk, Din, Din_S);
+	  sync Din_sync_high[3:0] (Clk, Din[7:4], Din_S[7:4]);
+	  sync Din_sync_low[3:0] (Clk, Din[3:0], Din_S[3:0]);
 	  sync F_sync[2:0] (Clk, F, F_S);
 	  sync R_sync[1:0] (Clk, R, R_S);
 	  
