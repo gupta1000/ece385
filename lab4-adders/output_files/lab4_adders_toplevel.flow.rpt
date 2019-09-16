@@ -1,5 +1,5 @@
 Flow report for lab4_adders_toplevel
-Sun Sep 15 21:07:22 2019
+Mon Sep 16 11:24:30 2019
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -40,15 +40,15 @@ refer to the applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Successful - Sun Sep 15 21:07:21 2019           ;
+; Flow Status                        ; Successful - Mon Sep 16 11:24:30 2019           ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                      ; lab4_adders_toplevel                            ;
 ; Top-level Entity Name              ; lab4_adders_toplevel                            ;
 ; Family                             ; Cyclone IV E                                    ;
 ; Device                             ; EP4CE115F29C7                                   ;
 ; Timing Models                      ; Final                                           ;
-; Total logic elements               ; 142                                             ;
-;     Total combinational functions  ; 126                                             ;
+; Total logic elements               ; 138                                             ;
+;     Total combinational functions  ; 122                                             ;
 ;     Dedicated logic registers      ; 105                                             ;
 ; Total registers                    ; 105                                             ;
 ; Total pins                         ; 93                                              ;
@@ -64,7 +64,7 @@ refer to the applicable agreement for further details.
 +-------------------+----------------------+
 ; Option            ; Setting              ;
 +-------------------+----------------------+
-; Start date & time ; 09/15/2019 21:07:07  ;
+; Start date & time ; 09/16/2019 11:24:18  ;
 ; Main task         ; Compilation          ;
 ; Revision Name     ; lab4_adders_toplevel ;
 +-------------------+----------------------+
@@ -75,7 +75,7 @@ refer to the applicable agreement for further details.
 +--------------------------------------+----------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                      ; Value                                  ; Default Value ; Entity Name ; Section Id     ;
 +--------------------------------------+----------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID                ; 118933447444208.156859962736410        ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID                ; 26830023665733.156865105853907         ; --            ; --          ; --             ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                     ; --            ; --          ; testbench      ;
 ; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; testbench                              ; --            ; --          ; eda_simulation ;
 ; EDA_OUTPUT_DATA_FORMAT               ; Systemverilog Hdl                      ; --            ; --          ; eda_simulation ;
@@ -103,8 +103,8 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:14     ; 1.0                     ; 1046 MB             ; 00:00:18                           ;
-; Total                ; 00:00:14     ; --                      ; --                  ; 00:00:18                           ;
+; Analysis & Synthesis ; 00:00:12     ; 1.0                     ; 1044 MB             ; 00:00:20                           ;
+; Total                ; 00:00:12     ; --                      ; --                  ; 00:00:20                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -113,7 +113,7 @@ refer to the applicable agreement for further details.
 +----------------------+------------------------------+--------------+--------------+----------------+
 ; Module Name          ; Machine Hostname             ; OS Name      ; OS Version   ; Processor type ;
 +----------------------+------------------------------+--------------+--------------+----------------+
-; Analysis & Synthesis ; dcl-l440-20.ews.illinois.edu ; CentOS Linux ; CentOS Linux ; x86_64         ;
+; Analysis & Synthesis ; gelib-4c-38.ews.illinois.edu ; CentOS Linux ; CentOS Linux ; x86_64         ;
 +----------------------+------------------------------+--------------+--------------+----------------+
 
 

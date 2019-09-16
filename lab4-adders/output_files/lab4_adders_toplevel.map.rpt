@@ -1,5 +1,5 @@
 Analysis & Synthesis report for lab4_adders_toplevel
-Sun Sep 15 21:07:22 2019
+Mon Sep 16 11:24:30 2019
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
 
 
@@ -15,14 +15,12 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
   9. Multiplexer Restructuring Statistics (Restructuring Performed)
- 10. Port Connectivity Checks: "carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_0|full_adder:FA3"
- 11. Port Connectivity Checks: "carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_0|full_adder:FA2"
- 12. Port Connectivity Checks: "carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_0|full_adder:FA1"
- 13. Port Connectivity Checks: "carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_0|full_adder:FA0"
- 14. Port Connectivity Checks: "carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_0"
- 15. Post-Synthesis Netlist Statistics for Top Partition
- 16. Elapsed Time Per Partition
- 17. Analysis & Synthesis Messages
+ 10. Port Connectivity Checks: "carry_select_adder:carry_select_adder_inst|csa4:csa4_1|full_adder:FA4"
+ 11. Port Connectivity Checks: "carry_select_adder:carry_select_adder_inst|csa4:csa4_1|full_adder:FA0"
+ 12. Port Connectivity Checks: "carry_select_adder:carry_select_adder_inst|full_adder:FA0"
+ 13. Post-Synthesis Netlist Statistics for Top Partition
+ 14. Elapsed Time Per Partition
+ 15. Analysis & Synthesis Messages
 
 
 
@@ -48,13 +46,13 @@ refer to the applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sun Sep 15 21:07:21 2019           ;
+; Analysis & Synthesis Status        ; Successful - Mon Sep 16 11:24:30 2019           ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Standard Edition ;
 ; Revision Name                      ; lab4_adders_toplevel                            ;
 ; Top-level Entity Name              ; lab4_adders_toplevel                            ;
 ; Family                             ; Cyclone IV E                                    ;
-; Total logic elements               ; 142                                             ;
-;     Total combinational functions  ; 126                                             ;
+; Total logic elements               ; 138                                             ;
+;     Total combinational functions  ; 122                                             ;
 ;     Dedicated logic registers      ; 105                                             ;
 ; Total registers                    ; 105                                             ;
 ; Total pins                         ; 93                                              ;
@@ -164,22 +162,21 @@ refer to the applicable agreement for further details.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.0%      ;
-;     Processors 3-4         ;   0.0%      ;
+;     Processors 2-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                              ;
-+----------------------------------+-----------------+------------------------------+-------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                          ; Library ;
-+----------------------------------+-----------------+------------------------------+-------------------------------------------------------+---------+
-; lab4_adders_toplevel.sv          ; yes             ; User SystemVerilog HDL File  ; /home/kg3/ece385/lab4-adders/lab4_adders_toplevel.sv  ;         ;
-; HexDriver.sv                     ; yes             ; User SystemVerilog HDL File  ; /home/kg3/ece385/lab4-adders/HexDriver.sv             ;         ;
-; full_adder.sv                    ; yes             ; User SystemVerilog HDL File  ; /home/kg3/ece385/lab4-adders/full_adder.sv            ;         ;
-; carry_lookahead_adder.sv         ; yes             ; User SystemVerilog HDL File  ; /home/kg3/ece385/lab4-adders/carry_lookahead_adder.sv ;         ;
-; cla4.sv                          ; yes             ; User SystemVerilog HDL File  ; /home/kg3/ece385/lab4-adders/cla4.sv                  ;         ;
-+----------------------------------+-----------------+------------------------------+-------------------------------------------------------+---------+
++----------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                             ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                         ; Library ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------+---------+
+; csa4.sv                          ; yes             ; User SystemVerilog HDL File  ; /home/kg3/ece385/lab4-adders/csa4.sv                 ;         ;
+; lab4_adders_toplevel.sv          ; yes             ; User SystemVerilog HDL File  ; /home/kg3/ece385/lab4-adders/lab4_adders_toplevel.sv ;         ;
+; HexDriver.sv                     ; yes             ; User SystemVerilog HDL File  ; /home/kg3/ece385/lab4-adders/HexDriver.sv            ;         ;
+; full_adder.sv                    ; yes             ; User SystemVerilog HDL File  ; /home/kg3/ece385/lab4-adders/full_adder.sv           ;         ;
+; carry_select_adder.sv            ; yes             ; User SystemVerilog HDL File  ; /home/kg3/ece385/lab4-adders/carry_select_adder.sv   ;         ;
++----------------------------------+-----------------+------------------------------+------------------------------------------------------+---------+
 
 
 +---------------------------------------------------------+
@@ -187,16 +184,16 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 142       ;
+; Estimated Total logic elements              ; 138       ;
 ;                                             ;           ;
-; Total combinational functions               ; 126       ;
+; Total combinational functions               ; 122       ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 81        ;
-;     -- 3 input functions                    ; 19        ;
-;     -- <=2 input functions                  ; 26        ;
+;     -- 4 input functions                    ; 77        ;
+;     -- 3 input functions                    ; 17        ;
+;     -- <=2 input functions                  ; 28        ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 126       ;
+;     -- normal mode                          ; 122       ;
 ;     -- arithmetic mode                      ; 0         ;
 ;                                             ;           ;
 ; Total registers                             ; 105       ;
@@ -209,47 +206,49 @@ refer to the applicable agreement for further details.
 ;                                             ;           ;
 ; Maximum fan-out node                        ; Clk~input ;
 ; Maximum fan-out                             ; 105       ;
-; Total fan-out                               ; 875       ;
-; Average fan-out                             ; 2.10      ;
+; Total fan-out                               ; 857       ;
+; Average fan-out                             ; 2.08      ;
 +---------------------------------------------+-----------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                         ;
-+-------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------+-----------------------+--------------+
-; Compilation Hierarchy Node                            ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                               ; Entity Name           ; Library Name ;
-+-------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------+-----------------------+--------------+
-; |lab4_adders_toplevel                                 ; 126 (19)            ; 105 (105)                 ; 0           ; 0            ; 0       ; 0         ; 93   ; 0            ; |lab4_adders_toplevel                                                                             ; lab4_adders_toplevel  ; work         ;
-;    |HexDriver:Ahex0_inst|                             ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|HexDriver:Ahex0_inst                                                        ; HexDriver             ; work         ;
-;    |HexDriver:Ahex1_inst|                             ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|HexDriver:Ahex1_inst                                                        ; HexDriver             ; work         ;
-;    |HexDriver:Ahex2_inst|                             ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|HexDriver:Ahex2_inst                                                        ; HexDriver             ; work         ;
-;    |HexDriver:Ahex3_inst|                             ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|HexDriver:Ahex3_inst                                                        ; HexDriver             ; work         ;
-;    |HexDriver:Bhex0_inst|                             ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|HexDriver:Bhex0_inst                                                        ; HexDriver             ; work         ;
-;    |HexDriver:Bhex1_inst|                             ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|HexDriver:Bhex1_inst                                                        ; HexDriver             ; work         ;
-;    |HexDriver:Bhex2_inst|                             ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|HexDriver:Bhex2_inst                                                        ; HexDriver             ; work         ;
-;    |HexDriver:Bhex3_inst|                             ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|HexDriver:Bhex3_inst                                                        ; HexDriver             ; work         ;
-;    |carry_lookahead_adder:carry_lookahead_adder_inst| ; 51 (11)             ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_lookahead_adder:carry_lookahead_adder_inst                            ; carry_lookahead_adder ; work         ;
-;       |cla4:cla4_0|                                   ; 8 (4)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_0                ; cla4                  ; work         ;
-;          |full_adder:FA0|                             ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_0|full_adder:FA0 ; full_adder            ; work         ;
-;          |full_adder:FA1|                             ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_0|full_adder:FA1 ; full_adder            ; work         ;
-;          |full_adder:FA2|                             ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_0|full_adder:FA2 ; full_adder            ; work         ;
-;          |full_adder:FA3|                             ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_0|full_adder:FA3 ; full_adder            ; work         ;
-;       |cla4:cla4_1|                                   ; 11 (7)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_1                ; cla4                  ; work         ;
-;          |full_adder:FA0|                             ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_1|full_adder:FA0 ; full_adder            ; work         ;
-;          |full_adder:FA1|                             ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_1|full_adder:FA1 ; full_adder            ; work         ;
-;          |full_adder:FA2|                             ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_1|full_adder:FA2 ; full_adder            ; work         ;
-;          |full_adder:FA3|                             ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_1|full_adder:FA3 ; full_adder            ; work         ;
-;       |cla4:cla4_2|                                   ; 13 (9)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_2                ; cla4                  ; work         ;
-;          |full_adder:FA0|                             ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_2|full_adder:FA0 ; full_adder            ; work         ;
-;          |full_adder:FA1|                             ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_2|full_adder:FA1 ; full_adder            ; work         ;
-;          |full_adder:FA2|                             ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_2|full_adder:FA2 ; full_adder            ; work         ;
-;          |full_adder:FA3|                             ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_2|full_adder:FA3 ; full_adder            ; work         ;
-;       |cla4:cla4_3|                                   ; 8 (4)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_3                ; cla4                  ; work         ;
-;          |full_adder:FA0|                             ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_3|full_adder:FA0 ; full_adder            ; work         ;
-;          |full_adder:FA1|                             ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_3|full_adder:FA1 ; full_adder            ; work         ;
-;          |full_adder:FA2|                             ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_3|full_adder:FA2 ; full_adder            ; work         ;
-;          |full_adder:FA3|                             ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_3|full_adder:FA3 ; full_adder            ; work         ;
-+-------------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------------+-----------------------+--------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                            ;
++-------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------+----------------------+--------------+
+; Compilation Hierarchy Node                      ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                         ; Entity Name          ; Library Name ;
++-------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------+----------------------+--------------+
+; |lab4_adders_toplevel                           ; 122 (33)            ; 105 (105)                 ; 0           ; 0            ; 0       ; 0         ; 93   ; 0            ; |lab4_adders_toplevel                                                                       ; lab4_adders_toplevel ; work         ;
+;    |HexDriver:Ahex0_inst|                       ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|HexDriver:Ahex0_inst                                                  ; HexDriver            ; work         ;
+;    |HexDriver:Ahex1_inst|                       ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|HexDriver:Ahex1_inst                                                  ; HexDriver            ; work         ;
+;    |HexDriver:Ahex2_inst|                       ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|HexDriver:Ahex2_inst                                                  ; HexDriver            ; work         ;
+;    |HexDriver:Ahex3_inst|                       ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|HexDriver:Ahex3_inst                                                  ; HexDriver            ; work         ;
+;    |HexDriver:Bhex0_inst|                       ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|HexDriver:Bhex0_inst                                                  ; HexDriver            ; work         ;
+;    |HexDriver:Bhex1_inst|                       ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|HexDriver:Bhex1_inst                                                  ; HexDriver            ; work         ;
+;    |HexDriver:Bhex2_inst|                       ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|HexDriver:Bhex2_inst                                                  ; HexDriver            ; work         ;
+;    |HexDriver:Bhex3_inst|                       ; 7 (7)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|HexDriver:Bhex3_inst                                                  ; HexDriver            ; work         ;
+;    |carry_select_adder:carry_select_adder_inst| ; 33 (6)              ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_select_adder:carry_select_adder_inst                            ; carry_select_adder   ; work         ;
+;       |csa4:csa4_1|                             ; 7 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_select_adder:carry_select_adder_inst|csa4:csa4_1                ; csa4                 ; work         ;
+;          |full_adder:FA1|                       ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_select_adder:carry_select_adder_inst|csa4:csa4_1|full_adder:FA1 ; full_adder           ; work         ;
+;          |full_adder:FA2|                       ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_select_adder:carry_select_adder_inst|csa4:csa4_1|full_adder:FA2 ; full_adder           ; work         ;
+;          |full_adder:FA3|                       ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_select_adder:carry_select_adder_inst|csa4:csa4_1|full_adder:FA3 ; full_adder           ; work         ;
+;          |full_adder:FA5|                       ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_select_adder:carry_select_adder_inst|csa4:csa4_1|full_adder:FA5 ; full_adder           ; work         ;
+;          |full_adder:FA6|                       ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_select_adder:carry_select_adder_inst|csa4:csa4_1|full_adder:FA6 ; full_adder           ; work         ;
+;       |csa4:csa4_2|                             ; 7 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_select_adder:carry_select_adder_inst|csa4:csa4_2                ; csa4                 ; work         ;
+;          |full_adder:FA1|                       ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_select_adder:carry_select_adder_inst|csa4:csa4_2|full_adder:FA1 ; full_adder           ; work         ;
+;          |full_adder:FA2|                       ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_select_adder:carry_select_adder_inst|csa4:csa4_2|full_adder:FA2 ; full_adder           ; work         ;
+;          |full_adder:FA3|                       ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_select_adder:carry_select_adder_inst|csa4:csa4_2|full_adder:FA3 ; full_adder           ; work         ;
+;          |full_adder:FA5|                       ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_select_adder:carry_select_adder_inst|csa4:csa4_2|full_adder:FA5 ; full_adder           ; work         ;
+;          |full_adder:FA6|                       ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_select_adder:carry_select_adder_inst|csa4:csa4_2|full_adder:FA6 ; full_adder           ; work         ;
+;       |csa4:csa4_3|                             ; 6 (0)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_select_adder:carry_select_adder_inst|csa4:csa4_3                ; csa4                 ; work         ;
+;          |full_adder:FA1|                       ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_select_adder:carry_select_adder_inst|csa4:csa4_3|full_adder:FA1 ; full_adder           ; work         ;
+;          |full_adder:FA2|                       ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_select_adder:carry_select_adder_inst|csa4:csa4_3|full_adder:FA2 ; full_adder           ; work         ;
+;          |full_adder:FA3|                       ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_select_adder:carry_select_adder_inst|csa4:csa4_3|full_adder:FA3 ; full_adder           ; work         ;
+;          |full_adder:FA5|                       ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_select_adder:carry_select_adder_inst|csa4:csa4_3|full_adder:FA5 ; full_adder           ; work         ;
+;          |full_adder:FA6|                       ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_select_adder:carry_select_adder_inst|csa4:csa4_3|full_adder:FA6 ; full_adder           ; work         ;
+;       |full_adder:FA0|                          ; 1 (1)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_select_adder:carry_select_adder_inst|full_adder:FA0             ; full_adder           ; work         ;
+;       |full_adder:FA1|                          ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_select_adder:carry_select_adder_inst|full_adder:FA1             ; full_adder           ; work         ;
+;       |full_adder:FA2|                          ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_select_adder:carry_select_adder_inst|full_adder:FA2             ; full_adder           ; work         ;
+;       |full_adder:FA3|                          ; 2 (2)               ; 0 (0)                     ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |lab4_adders_toplevel|carry_select_adder:carry_select_adder_inst|full_adder:FA3             ; full_adder           ; work         ;
++-------------------------------------------------+---------------------+---------------------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------------------------------------------------------+----------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -268,60 +267,45 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                  ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output        ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------+
-; 3:1                ; 17 bits   ; 34 LEs        ; 17 LEs               ; 17 LEs                 ; Yes        ; |lab4_adders_toplevel|Sum[0]~reg0 ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |lab4_adders_toplevel|B[9]        ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |lab4_adders_toplevel|A[5]        ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------+
+; 3:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |lab4_adders_toplevel|Sum[0]~reg0  ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |lab4_adders_toplevel|B[13]        ;
+; 3:1                ; 16 bits   ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; Yes        ; |lab4_adders_toplevel|A[9]         ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |lab4_adders_toplevel|Sum[5]~reg0  ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |lab4_adders_toplevel|Sum[10]~reg0 ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |lab4_adders_toplevel|Sum[13]~reg0 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_0|full_adder:FA3"                             ;
-+------+--------+----------+----------------------------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                                                  ;
-+------+--------+----------+----------------------------------------------------------------------------------------------------------+
-; c    ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-+------+--------+----------+----------------------------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "carry_select_adder:carry_select_adder_inst|csa4:csa4_1|full_adder:FA4" ;
++------+-------+----------+-------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                 ;
++------+-------+----------+-------------------------------------------------------------------------+
+; z    ; Input ; Info     ; Stuck at VCC                                                            ;
++------+-------+----------+-------------------------------------------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_0|full_adder:FA2"                             ;
-+------+--------+----------+----------------------------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                                                  ;
-+------+--------+----------+----------------------------------------------------------------------------------------------------------+
-; c    ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-+------+--------+----------+----------------------------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "carry_select_adder:carry_select_adder_inst|csa4:csa4_1|full_adder:FA0" ;
++------+-------+----------+-------------------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                                 ;
++------+-------+----------+-------------------------------------------------------------------------+
+; z    ; Input ; Info     ; Stuck at GND                                                            ;
++------+-------+----------+-------------------------------------------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_0|full_adder:FA1"                             ;
-+------+--------+----------+----------------------------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                                                  ;
-+------+--------+----------+----------------------------------------------------------------------------------------------------------+
-; c    ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-+------+--------+----------+----------------------------------------------------------------------------------------------------------+
-
-
-+-------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_0|full_adder:FA0"                             ;
-+------+--------+----------+----------------------------------------------------------------------------------------------------------+
-; Port ; Type   ; Severity ; Details                                                                                                  ;
-+------+--------+----------+----------------------------------------------------------------------------------------------------------+
-; c    ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-+------+--------+----------+----------------------------------------------------------------------------------------------------------+
-
-
-+------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_0" ;
-+------+-------+----------+----------------------------------------------------------------+
-; Port ; Type  ; Severity ; Details                                                        ;
-+------+-------+----------+----------------------------------------------------------------+
-; Ci   ; Input ; Info     ; Stuck at GND                                                   ;
-+------+-------+----------+----------------------------------------------------------------+
++---------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "carry_select_adder:carry_select_adder_inst|full_adder:FA0" ;
++------+-------+----------+-------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                     ;
++------+-------+----------+-------------------------------------------------------------+
+; z    ; Input ; Info     ; Stuck at GND                                                ;
++------+-------+----------+-------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -334,14 +318,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ;     ENA               ; 32                          ;
 ;     ENA SCLR          ; 17                          ;
 ;     plain             ; 56                          ;
-; cycloneiii_lcell_comb ; 126                         ;
-;     normal            ; 126                         ;
-;         2 data inputs ; 26                          ;
-;         3 data inputs ; 19                          ;
-;         4 data inputs ; 81                          ;
+; cycloneiii_lcell_comb ; 122                         ;
+;     normal            ; 122                         ;
+;         2 data inputs ; 28                          ;
+;         3 data inputs ; 17                          ;
+;         4 data inputs ; 77                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 8.00                        ;
-; Average LUT depth     ; 2.45                        ;
+; Average LUT depth     ; 2.03                        ;
 +-----------------------+-----------------------------+
 
 
@@ -360,10 +344,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Standard Edition
-    Info: Processing started: Sun Sep 15 21:07:07 2019
+    Info: Processing started: Mon Sep 16 11:24:18 2019
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off lab4_adders_toplevel -c lab4_adders_toplevel
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file csa4.sv
+    Info (12023): Found entity 1: csa4 File: /home/kg3/ece385/lab4-adders/csa4.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file ripple_adder.sv
     Info (12023): Found entity 1: ripple_adder File: /home/kg3/ece385/lab4-adders/ripple_adder.sv Line: 1
 Warning (10090): Verilog HDL syntax warning at lab4_adders_toplevel.sv(14): extra block comment delimiter characters /* within block comment File: /home/kg3/ece385/lab4-adders/lab4_adders_toplevel.sv Line: 14
@@ -384,22 +370,21 @@ Info (12021): Found 1 design units, including 1 entities, in source file cla4.sv
 Info (12021): Found 1 design units, including 1 entities, in source file testbench.sv
     Info (12023): Found entity 1: testbench File: /home/kg3/ece385/lab4-adders/testbench.sv Line: 1
 Info (12127): Elaborating entity "lab4_adders_toplevel" for the top level hierarchy
-Info (12128): Elaborating entity "carry_lookahead_adder" for hierarchy "carry_lookahead_adder:carry_lookahead_adder_inst" File: /home/kg3/ece385/lab4-adders/lab4_adders_toplevel.sv Line: 122
-Info (12128): Elaborating entity "cla4" for hierarchy "carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_0" File: /home/kg3/ece385/lab4-adders/carry_lookahead_adder.sv Line: 22
-Info (12128): Elaborating entity "full_adder" for hierarchy "carry_lookahead_adder:carry_lookahead_adder_inst|cla4:cla4_0|full_adder:FA0" File: /home/kg3/ece385/lab4-adders/cla4.sv Line: 27
+Info (12128): Elaborating entity "carry_select_adder" for hierarchy "carry_select_adder:carry_select_adder_inst" File: /home/kg3/ece385/lab4-adders/lab4_adders_toplevel.sv Line: 130
+Info (12128): Elaborating entity "full_adder" for hierarchy "carry_select_adder:carry_select_adder_inst|full_adder:FA0" File: /home/kg3/ece385/lab4-adders/carry_select_adder.sv Line: 40
+Info (12128): Elaborating entity "csa4" for hierarchy "carry_select_adder:carry_select_adder_inst|csa4:csa4_1" File: /home/kg3/ece385/lab4-adders/carry_select_adder.sv Line: 45
 Info (12128): Elaborating entity "HexDriver" for hierarchy "HexDriver:Ahex0_inst" File: /home/kg3/ece385/lab4-adders/lab4_adders_toplevel.sv Line: 137
-Warning (12241): 4 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 251 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 247 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 20 input pins
     Info (21059): Implemented 73 output pins
-    Info (21061): Implemented 158 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 3 warnings
-    Info: Peak virtual memory: 1086 megabytes
-    Info: Processing ended: Sun Sep 15 21:07:22 2019
-    Info: Elapsed time: 00:00:15
-    Info: Total CPU time (on all processors): 00:00:18
+    Info (21061): Implemented 154 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 2 warnings
+    Info: Peak virtual memory: 1088 megabytes
+    Info: Processing ended: Mon Sep 16 11:24:31 2019
+    Info: Elapsed time: 00:00:13
+    Info: Total CPU time (on all processors): 00:00:20
 
 

@@ -8,52 +8,52 @@ z2
 !i10f 100
 cModel Technology
 Z0 d/home/kg3/ece385/lab4-adders/simulation/modelsim
-vcarry_lookahead_adder
+vcarry_select_adder
 Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-Z2 !s110 1568599658
+Z2 !s110 1568651078
 !i10b 1
-!s100 D8?78LF[<U@U8XfHRE`El2
-IC<A`]SC;mY8KjNN[h2J`<0
+!s100 _@fGTUz71=ezaI_LmS`I?3
+Im]<k_l:=463:b477h=aR@3
 Z3 VDg1SIo80bB@j0V0VzS_@n1
-!s105 carry_lookahead_adder_sv_unit
+!s105 carry_select_adder_sv_unit
 S1
 R0
-w1568599414
-8/home/kg3/ece385/lab4-adders/carry_lookahead_adder.sv
-F/home/kg3/ece385/lab4-adders/carry_lookahead_adder.sv
+w1568651054
+8/home/kg3/ece385/lab4-adders/carry_select_adder.sv
+F/home/kg3/ece385/lab4-adders/carry_select_adder.sv
 L0 1
 Z4 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z5 !s108 1568599658.000000
-!s107 /home/kg3/ece385/lab4-adders/carry_lookahead_adder.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+/home/kg3/ece385/lab4-adders|/home/kg3/ece385/lab4-adders/carry_lookahead_adder.sv|
+Z5 !s108 1568651078.000000
+!s107 /home/kg3/ece385/lab4-adders/carry_select_adder.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+/home/kg3/ece385/lab4-adders|/home/kg3/ece385/lab4-adders/carry_select_adder.sv|
 !i113 1
 Z6 o-sv -work work
 Z7 !s92 -sv -work work +incdir+/home/kg3/ece385/lab4-adders
 Z8 tCvgOpt 0
-vcla4
+vcsa4
 R1
 R2
 !i10b 1
-!s100 5P;RE[;ZF>^O5[Bm]EH<W0
-IlR?2?I9H4[;SCVlBN9U=42
+!s100 3:GS9c6dOzgHRJV:iL?5P3
+I3AO7F>Cfn[Y7ecoOVhN310
 R3
-!s105 cla4_sv_unit
+!s105 csa4_sv_unit
 S1
 R0
-w1568596381
-8/home/kg3/ece385/lab4-adders/cla4.sv
-F/home/kg3/ece385/lab4-adders/cla4.sv
+w1568650823
+8/home/kg3/ece385/lab4-adders/csa4.sv
+F/home/kg3/ece385/lab4-adders/csa4.sv
 L0 1
 R4
 r1
 !s85 0
 31
 R5
-!s107 /home/kg3/ece385/lab4-adders/cla4.sv|
-!s90 -reportprogress|300|-sv|-work|work|+incdir+/home/kg3/ece385/lab4-adders|/home/kg3/ece385/lab4-adders/cla4.sv|
+!s107 /home/kg3/ece385/lab4-adders/csa4.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+/home/kg3/ece385/lab4-adders|/home/kg3/ece385/lab4-adders/csa4.sv|
 !i113 1
 R6
 R7
@@ -101,7 +101,7 @@ R4
 r1
 !s85 0
 31
-!s108 1568599657.000000
+R5
 !s107 /home/kg3/ece385/lab4-adders/HexDriver.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+/home/kg3/ece385/lab4-adders|/home/kg3/ece385/lab4-adders/HexDriver.sv|
 !i113 1
@@ -113,13 +113,13 @@ vlab4_adders_toplevel
 R1
 R2
 !i10b 1
-!s100 Ff0C^ZK^zfkDz504]X;SI2
-IgAXLhdf=zlKd0T?9he=[01
+!s100 JD[>08GCoFfH65EZ1jaIE3
+Idj0cn`OQXIXP;Gf`SA4>33
 R3
 !s105 lab4_adders_toplevel_sv_unit
 S1
 R0
-w1568599616
+w1568650684
 8/home/kg3/ece385/lab4-adders/lab4_adders_toplevel.sv
 F/home/kg3/ece385/lab4-adders/lab4_adders_toplevel.sv
 L0 17
@@ -138,13 +138,13 @@ vtestbench
 R1
 R2
 !i10b 1
-!s100 5OWE9=lQ@czJP`mg^oECJ3
-I>dKXLUk?d;n`Jfm8Pg@9>1
+!s100 4>_?4AW?ELMZT@L1<Pf^D1
+IRcUaUkhJ_J7IDL2F2hOHa0
 R3
 !s105 testbench_sv_unit
 S1
 R0
-w1568599157
+w1568599729
 8/home/kg3/ece385/lab4-adders/testbench.sv
 F/home/kg3/ece385/lab4-adders/testbench.sv
 L0 1
