@@ -1,2 +1,2 @@
-Info (10281): Verilog HDL Declaration information at cla4.sv(7): object "p" differs only in case from object "P" in the same scope File: /home/kg3/ece385/lab4-adders/cla4.sv Line: 7
-Info (10281): Verilog HDL Declaration information at cla4.sv(9): object "g" differs only in case from object "G" in the same scope File: /home/kg3/ece385/lab4-adders/cla4.sv Line: 9
+Info (10281): Verilog HDL Declaration information at cla4.sv(7): object "p" differs only in case from object "P" in the same scope File: C:/Users/kg3/ece385/lab4-adders/cla4.sv Line: 7
+Info (10281): Verilog HDL Declaration information at cla4.sv(9): object "g" differs only in case from object "G" in the same scope File: C:/Users/kg3/ece385/lab4-adders/cla4.sv Line: 9
