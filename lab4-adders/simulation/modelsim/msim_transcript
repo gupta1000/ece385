@@ -1,0 +1,150 @@
+# do lab4_adders_toplevel_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+# vmap work rtl_work 
+# Copying /software/quartus-std-18.1/modelsim_ase/linuxaloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -sv -work work +incdir+/home/kg3/ece385/lab4-adders {/home/kg3/ece385/lab4-adders/HexDriver.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 21:07:37 on Sep 15,2019
+# vlog -reportprogress 300 -sv -work work "+incdir+/home/kg3/ece385/lab4-adders" /home/kg3/ece385/lab4-adders/HexDriver.sv 
+# -- Compiling module HexDriver
+# 
+# Top level modules:
+# 	HexDriver
+# End time: 21:07:38 on Sep 15,2019, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+/home/kg3/ece385/lab4-adders {/home/kg3/ece385/lab4-adders/full_adder.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 21:07:38 on Sep 15,2019
+# vlog -reportprogress 300 -sv -work work "+incdir+/home/kg3/ece385/lab4-adders" /home/kg3/ece385/lab4-adders/full_adder.sv 
+# -- Compiling module full_adder
+# 
+# Top level modules:
+# 	full_adder
+# End time: 21:07:38 on Sep 15,2019, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+/home/kg3/ece385/lab4-adders {/home/kg3/ece385/lab4-adders/carry_lookahead_adder.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 21:07:38 on Sep 15,2019
+# vlog -reportprogress 300 -sv -work work "+incdir+/home/kg3/ece385/lab4-adders" /home/kg3/ece385/lab4-adders/carry_lookahead_adder.sv 
+# -- Compiling module carry_lookahead_adder
+# 
+# Top level modules:
+# 	carry_lookahead_adder
+# End time: 21:07:38 on Sep 15,2019, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+/home/kg3/ece385/lab4-adders {/home/kg3/ece385/lab4-adders/cla4.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 21:07:38 on Sep 15,2019
+# vlog -reportprogress 300 -sv -work work "+incdir+/home/kg3/ece385/lab4-adders" /home/kg3/ece385/lab4-adders/cla4.sv 
+# -- Compiling module cla4
+# 
+# Top level modules:
+# 	cla4
+# End time: 21:07:38 on Sep 15,2019, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+/home/kg3/ece385/lab4-adders {/home/kg3/ece385/lab4-adders/lab4_adders_toplevel.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 21:07:38 on Sep 15,2019
+# vlog -reportprogress 300 -sv -work work "+incdir+/home/kg3/ece385/lab4-adders" /home/kg3/ece385/lab4-adders/lab4_adders_toplevel.sv 
+# -- Compiling module lab4_adders_toplevel
+# 
+# Top level modules:
+# 	lab4_adders_toplevel
+# End time: 21:07:38 on Sep 15,2019, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vlog -sv -work work +incdir+/home/kg3/ece385/lab4-adders {/home/kg3/ece385/lab4-adders/testbench.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 21:07:38 on Sep 15,2019
+# vlog -reportprogress 300 -sv -work work "+incdir+/home/kg3/ece385/lab4-adders" /home/kg3/ece385/lab4-adders/testbench.sv 
+# -- Compiling module testbench
+# 
+# Top level modules:
+# 	testbench
+# End time: 21:07:38 on Sep 15,2019, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs="+acc"  testbench
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs=""+acc"" testbench 
+# Start time: 21:07:38 on Sep 15,2019
+# Loading sv_std.std
+# Loading work.testbench
+# Loading work.lab4_adders_toplevel
+# Loading work.carry_lookahead_adder
+# Loading work.cla4
+# Loading work.full_adder
+# Loading work.HexDriver
+# ** Warning: (vsim-3017) /home/kg3/ece385/lab4-adders/cla4.sv(27): [TFMPC] - Too few port connections. Expected 5, found 4.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/adders/carry_lookahead_adder_inst/cla4_0/FA0 File: /home/kg3/ece385/lab4-adders/full_adder.sv
+# ** Warning: (vsim-3722) /home/kg3/ece385/lab4-adders/cla4.sv(27): [TFMPC] - Missing connection for port 'c'.
+# ** Warning: (vsim-3017) /home/kg3/ece385/lab4-adders/cla4.sv(28): [TFMPC] - Too few port connections. Expected 5, found 4.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/adders/carry_lookahead_adder_inst/cla4_0/FA1 File: /home/kg3/ece385/lab4-adders/full_adder.sv
+# ** Warning: (vsim-3722) /home/kg3/ece385/lab4-adders/cla4.sv(28): [TFMPC] - Missing connection for port 'c'.
+# ** Warning: (vsim-3017) /home/kg3/ece385/lab4-adders/cla4.sv(29): [TFMPC] - Too few port connections. Expected 5, found 4.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/adders/carry_lookahead_adder_inst/cla4_0/FA2 File: /home/kg3/ece385/lab4-adders/full_adder.sv
+# ** Warning: (vsim-3722) /home/kg3/ece385/lab4-adders/cla4.sv(29): [TFMPC] - Missing connection for port 'c'.
+# ** Warning: (vsim-3017) /home/kg3/ece385/lab4-adders/cla4.sv(30): [TFMPC] - Too few port connections. Expected 5, found 4.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/adders/carry_lookahead_adder_inst/cla4_0/FA3 File: /home/kg3/ece385/lab4-adders/full_adder.sv
+# ** Warning: (vsim-3722) /home/kg3/ece385/lab4-adders/cla4.sv(30): [TFMPC] - Missing connection for port 'c'.
+# ** Warning: (vsim-3017) /home/kg3/ece385/lab4-adders/cla4.sv(27): [TFMPC] - Too few port connections. Expected 5, found 4.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/adders/carry_lookahead_adder_inst/cla4_1/FA0 File: /home/kg3/ece385/lab4-adders/full_adder.sv
+# ** Warning: (vsim-3722) /home/kg3/ece385/lab4-adders/cla4.sv(27): [TFMPC] - Missing connection for port 'c'.
+# ** Warning: (vsim-3017) /home/kg3/ece385/lab4-adders/cla4.sv(28): [TFMPC] - Too few port connections. Expected 5, found 4.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/adders/carry_lookahead_adder_inst/cla4_1/FA1 File: /home/kg3/ece385/lab4-adders/full_adder.sv
+# ** Warning: (vsim-3722) /home/kg3/ece385/lab4-adders/cla4.sv(28): [TFMPC] - Missing connection for port 'c'.
+# ** Warning: (vsim-3017) /home/kg3/ece385/lab4-adders/cla4.sv(29): [TFMPC] - Too few port connections. Expected 5, found 4.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/adders/carry_lookahead_adder_inst/cla4_1/FA2 File: /home/kg3/ece385/lab4-adders/full_adder.sv
+# ** Warning: (vsim-3722) /home/kg3/ece385/lab4-adders/cla4.sv(29): [TFMPC] - Missing connection for port 'c'.
+# ** Warning: (vsim-3017) /home/kg3/ece385/lab4-adders/cla4.sv(30): [TFMPC] - Too few port connections. Expected 5, found 4.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/adders/carry_lookahead_adder_inst/cla4_1/FA3 File: /home/kg3/ece385/lab4-adders/full_adder.sv
+# ** Warning: (vsim-3722) /home/kg3/ece385/lab4-adders/cla4.sv(30): [TFMPC] - Missing connection for port 'c'.
+# ** Warning: (vsim-3017) /home/kg3/ece385/lab4-adders/cla4.sv(27): [TFMPC] - Too few port connections. Expected 5, found 4.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/adders/carry_lookahead_adder_inst/cla4_2/FA0 File: /home/kg3/ece385/lab4-adders/full_adder.sv
+# ** Warning: (vsim-3722) /home/kg3/ece385/lab4-adders/cla4.sv(27): [TFMPC] - Missing connection for port 'c'.
+# ** Warning: (vsim-3017) /home/kg3/ece385/lab4-adders/cla4.sv(28): [TFMPC] - Too few port connections. Expected 5, found 4.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/adders/carry_lookahead_adder_inst/cla4_2/FA1 File: /home/kg3/ece385/lab4-adders/full_adder.sv
+# ** Warning: (vsim-3722) /home/kg3/ece385/lab4-adders/cla4.sv(28): [TFMPC] - Missing connection for port 'c'.
+# ** Warning: (vsim-3017) /home/kg3/ece385/lab4-adders/cla4.sv(29): [TFMPC] - Too few port connections. Expected 5, found 4.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/adders/carry_lookahead_adder_inst/cla4_2/FA2 File: /home/kg3/ece385/lab4-adders/full_adder.sv
+# ** Warning: (vsim-3722) /home/kg3/ece385/lab4-adders/cla4.sv(29): [TFMPC] - Missing connection for port 'c'.
+# ** Warning: (vsim-3017) /home/kg3/ece385/lab4-adders/cla4.sv(30): [TFMPC] - Too few port connections. Expected 5, found 4.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/adders/carry_lookahead_adder_inst/cla4_2/FA3 File: /home/kg3/ece385/lab4-adders/full_adder.sv
+# ** Warning: (vsim-3722) /home/kg3/ece385/lab4-adders/cla4.sv(30): [TFMPC] - Missing connection for port 'c'.
+# ** Warning: (vsim-3017) /home/kg3/ece385/lab4-adders/cla4.sv(27): [TFMPC] - Too few port connections. Expected 5, found 4.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/adders/carry_lookahead_adder_inst/cla4_3/FA0 File: /home/kg3/ece385/lab4-adders/full_adder.sv
+# ** Warning: (vsim-3722) /home/kg3/ece385/lab4-adders/cla4.sv(27): [TFMPC] - Missing connection for port 'c'.
+# ** Warning: (vsim-3017) /home/kg3/ece385/lab4-adders/cla4.sv(28): [TFMPC] - Too few port connections. Expected 5, found 4.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/adders/carry_lookahead_adder_inst/cla4_3/FA1 File: /home/kg3/ece385/lab4-adders/full_adder.sv
+# ** Warning: (vsim-3722) /home/kg3/ece385/lab4-adders/cla4.sv(28): [TFMPC] - Missing connection for port 'c'.
+# ** Warning: (vsim-3017) /home/kg3/ece385/lab4-adders/cla4.sv(29): [TFMPC] - Too few port connections. Expected 5, found 4.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/adders/carry_lookahead_adder_inst/cla4_3/FA2 File: /home/kg3/ece385/lab4-adders/full_adder.sv
+# ** Warning: (vsim-3722) /home/kg3/ece385/lab4-adders/cla4.sv(29): [TFMPC] - Missing connection for port 'c'.
+# ** Warning: (vsim-3017) /home/kg3/ece385/lab4-adders/cla4.sv(30): [TFMPC] - Too few port connections. Expected 5, found 4.
+#    Time: 0 ps  Iteration: 0  Instance: /testbench/adders/carry_lookahead_adder_inst/cla4_3/FA3 File: /home/kg3/ece385/lab4-adders/full_adder.sv
+# ** Warning: (vsim-3722) /home/kg3/ece385/lab4-adders/cla4.sv(30): [TFMPC] - Missing connection for port 'c'.
+# 
+# add wave *
+# ** Error: Unable to lock WLF file "vsim.wlf". Retrying 1 times, errno 11
+# ** Error: Unable to lock WLF file "vsim.wlf". Retrying 2 times, errno 11
+# ** Error: Unable to lock WLF file "vsim.wlf". Retrying 3 times, errno 11
+# ** Error: Cannot lock WLF file: "vsim.wlf"
+#           errno 11: Resource temporarily unavailable.
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: kg3  Hostname: dcl-l440-20.ews.illinois.edu  ProcessID: 888070
+#           Attempting to use alternate WLF file "./wlftUTWlGI".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftUTWlGI
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run 1000 ns
+# End time: 21:08:13 on Sep 15,2019, Elapsed time: 0:00:35
+# Errors: 4, Warnings: 34

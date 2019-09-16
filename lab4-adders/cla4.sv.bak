@@ -1,0 +1,19 @@
+module carry_lookahead_adder
+(
+	input   logic[15:0]     A,
+	input   logic[15:0]     B,
+	output  logic[15:0]     Sum,
+	output  logic           CO
+);
+
+	logic[15:0] P, G, C;
+	
+	assign P = A^B;
+	assign G = A&B;
+	
+	// assign carry-in bit to zero for non-serial operation
+	assign C[0] = 1'b0;
+
+	
+     
+endmodule
