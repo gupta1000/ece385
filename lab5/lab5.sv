@@ -15,16 +15,26 @@ module lab5(input logic [7:0] S,
 	assign Aval = A;
 	assign Bval = B;
 	assign Reset_A = Reset_SH | Clear_XA;
-	
-	always_latch
-	begin 
-		// if control unit is adding, save top bit to X
-		if (Ld_A)
-			x_val = add_out[8];
-		
+//	
+//	always_latch
+//	begin 
+//		// if control unit is adding, save top bit to X
+//		if (Ld_A)
+//			x_val = add_out[8];
+//		
+//		X = x_val;
+//	end
+//	
+	always_ff @ (posedge Clk)
+	begin
+		if (Reset_A) //notice, this is a sycnrhonous reset, which is recommended on the FPGA
+			x_val <= 1'b0;
+		else if (Ld_A)
+			x_val <= add_out[8];
+			
 		X = x_val;
 	end
-	
+		
 	// module instantiation
 
 	reg_8 reg_8_A (

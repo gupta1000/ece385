@@ -4,7 +4,7 @@ module control (input logic Clk, Reset, ClearA_LoadB, Run, M,
                 output logic Shift_En, Ld_A, Ld_B, Clear_XA, Sub);
 
     // extended the original 6 states to 10 to include 4 more shifting cycles
-    enum logic [4:0] {A, B, C, D, E, F, G, H, I, Ba, Ca, Da, Ea, Fa, Ga, Ha, Ia, HALT} curr_state, next_state; 
+    enum logic [4:0] {A, B, C, D, E, F, G, H, I, Ba, Ca, Da, Ea, Fa, Ga, Ha, Ia, HALT, PREPARE} curr_state, next_state; 
 	 
 	//updates flip flop, current state is the only one
     always_ff @ (posedge Clk)  
@@ -24,7 +24,10 @@ module control (input logic Clk, Reset, ClearA_LoadB, Run, M,
         unique case (curr_state)
 
             A :    if (Run)
-						     next_state = Ba;
+						     next_state = PREPARE;
+							  
+				PREPARE: next_state = Ba;
+				
             B :    next_state = Ca;
 				C :    next_state = Da;
 				D :    next_state = Ea;
@@ -52,6 +55,14 @@ module control (input logic Clk, Reset, ClearA_LoadB, Run, M,
 		  // Assign outputs based on ‘state’
         case (curr_state) 
 	   	   A: 
+	         begin
+                Ld_A = 1'b0;
+                Ld_B = ClearA_LoadB;
+                Shift_En = 1'b0;
+					 Clear_XA = 1'b0;
+					 Sub = 1'b0;
+		      end
+				PREPARE: 
 	         begin
                 Ld_A = 1'b0;
                 Ld_B = ClearA_LoadB;
