@@ -77,7 +77,16 @@ assign MIO_EN = ~OE;
 datapath d0 (
 	.*,
 	.Reset(~Reset),
-	.Bus(Data)
+	.Bus(Data),
+	.LD_PC,
+	.LD_IR,
+	.LD_MAR,
+	.LD_MDR,
+	.MDR_In,
+	.GatePC,
+	.GateMDR,
+	.GateALU,
+	.GateMARMUX
 );
 
 // Our SRAM and I/O controller
