@@ -1,6 +1,6 @@
 module bus_gates(
-	input [3:0] Sel,
-	input [15:0] PC, MDR, ALU, MARMUX,
+	input logic [3:0] Sel,
+	input logic [15:0] PC, MDR, ALU, MARMUX,
 	output logic [15:0] Out_Bus
 );
 

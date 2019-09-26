@@ -82,11 +82,14 @@ datapath d0 (
 	.LD_IR,
 	.LD_MAR,
 	.LD_MDR,
+	.LD_CC,
+	.LD_BEN,
 	.MDR_In,
 	.GatePC,
 	.GateMDR,
 	.GateALU,
-	.GateMARMUX
+	.GateMARMUX,
+	.BEN
 );
 
 // Our SRAM and I/O controller

@@ -1,6 +1,7 @@
 module datapath (
-	input logic Clk, Reset, LD_PC, LD_IR, LD_MAR, LD_MDR, GatePC, GateMDR, GateALU, GateMARMUX,
+	input logic Clk, Reset, LD_PC, LD_IR, LD_MAR, LD_MDR, LD_CC, LD_BEN, GatePC, GateMDR, GateALU, GateMARMUX,
 	input logic [15:0] MDR_In,
+	output logic BEN,
 	output logic [15:0] PC, IR, MDR, MAR,
 	inout wire [15:0] Bus
 );
@@ -44,6 +45,16 @@ module datapath (
 		.Load(LD_MDR),
 		.D(MIO_EN ? MDR_In : Bus),
 		.Out(MDR)
+	);
+	
+	nzp_ben nb (
+		.Clk,
+		.Reset,
+		.LD_NZP(LD_CC),
+		.LD_BEN,
+		.CC(IR[11:9]),
+		.Bus,
+		.BEN
 	);
 
 endmodule
