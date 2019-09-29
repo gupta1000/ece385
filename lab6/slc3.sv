@@ -54,7 +54,7 @@ HexDriver hex_driver2 (IR[11:8], HEX2);
 HexDriver hex_driver1 (IR[7:4], HEX1);
 HexDriver hex_driver0 (IR[3:0], HEX0);
 
-// For week 2, hexdrivers will be mounted to Mem2IO
+// For week 2, hexdrivers will be mounted to Mem2IO	
 // HexDriver hex_driver3 (hex_4[3][3:0], HEX3);
 // HexDriver hex_driver2 (hex_4[2][3:0], HEX2);
 // HexDriver hex_driver1 (hex_4[1][3:0], HEX1);
@@ -69,7 +69,7 @@ HexDriver hex_driver4 (PC[3:0], HEX4);
 // Connect MAR to ADDR, which is also connected as an input into MEM2IO.
 // MEM2IO will determine what gets put onto Data_CPU (which serves as a potential
 // input into MDR)
-assign ADDR = { 4'b00, MAR }; //Note, our external SRAM chip is 1Mx16, but address space is only 64Kx16
+assign ADDR = { 4'b0000, MAR }; //Note, our external SRAM chip is 1Mx16, but address space is only 64Kx16
 assign MIO_EN = ~OE;
 
 // You need to make your own datapath module and connect everything to the datapath
