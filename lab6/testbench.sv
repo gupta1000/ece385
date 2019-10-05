@@ -38,7 +38,7 @@ initial begin: TEST_VECTORS
 	Run = 1;
 	Continue = 1;
 	
-	S = 16'h000b;
+	S = 16'h005a;
 	
 	#2 Reset = 1;
 	
@@ -47,119 +47,27 @@ initial begin: TEST_VECTORS
 
 	#20 Continue = 0;
 	
-	#4 Continue = 0;
-	#4 Continue = 1;
+	for(int i = 0; i < 10; i++)
+	begin
+		#2 Continue = 0;
+		#2 Continue = 1;
+	end
 	
-	#4 Continue = 0;
-	#4 Continue = 1;
+	#2 S = 16'h0002;
 	
-	#4 Continue = 0;
-	#4 Continue = 1;
+	for(int i = 0; i < 40000; i++)
+	begin
+		#2 Continue = 0;
+		#2 Continue = 1;
+	end
 	
-	#4 Continue = 0;
-	#4 Continue = 1;
+	#2 S = 16'h0003;
 	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
-	
-	#4 Continue = 0;
-	#4 Continue = 1;
+	for(int i = 0; i < 40000; i++)
+	begin
+		#2 Continue = 0;
+		#2 Continue = 1;
+	end
 	
 end
 endmodule

@@ -95,7 +95,7 @@ module datapath (
 	alu alu (
 		.Sel(ALUK),
 		.A,
-		.B,
+		.B(SR2MUX ? {{11{IR[4]}} ,IR[4:0]} : B),
 		.Out(ALU)
 	);
 

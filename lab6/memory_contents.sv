@@ -191,7 +191,7 @@ task memory_contents(output logic[15:0] mem_array[0:size-1]);
    mem_array[ 151 ] =    opINC(R1)                ;       // increment counter
    mem_array[ 152 ] =    opADDi(R4, R1, -16)      ;       // test for counter == 16
    mem_array[ 153 ] =    opBR(n, -9)              ;       // less than 16, repeat
-   mem_array[ 154 ] =    opRET()                  ;       // DISPLAY FUNCTION RETURN
+   mem_array[ 154 ] =    opBR(nzp, -1); // opRET()                  ;       // DISPLAY FUNCTION RETURN
    mem_array[ 155 ] =    opPSE(12'h802)           ;       //    instruction as data
    
    

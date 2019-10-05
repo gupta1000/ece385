@@ -234,8 +234,10 @@ module ISDU (   input logic         Clk,
 					GateMDR = 1'b1;
 					LD_IR = 1'b1;
 				end
-			PauseIR1: ;
-			PauseIR2: ;
+			PauseIR1:
+				LD_LED = 1'b1;	
+			PauseIR2: 
+				LD_LED = 1'b1;
 			S_32 : 
 				begin
 					LD_BEN = 1'b1;
@@ -293,6 +295,7 @@ module ISDU (   input logic         Clk,
 					GateMDR = 1'b1;
 					LD_REG = 1'b1;
 					LD_CC = 1'b1;
+					DRMUX = 1'b0;
 				end
 			
 			// STR
@@ -302,6 +305,7 @@ module ISDU (   input logic         Clk,
 					LD_MAR = 1'b1;
 					ADDR1MUX = 1'b0;
 					ADDR2MUX = 2'b01;
+					SR1MUX = 1'b0;
 				end
 			S_23:
 				begin
