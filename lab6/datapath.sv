@@ -1,3 +1,4 @@
+// datapath for our slc3 module, gets values of load for each of the registers and implements bus logic
 module datapath (
 	input logic Clk, Reset, LD_PC, LD_IR, LD_MAR, LD_MDR, LD_CC, LD_BEN, LD_REG, GatePC, GateMDR, GateALU, GateMARMUX,
 	input logic DRMUX, SR1MUX, SR2MUX, ADDR1MUX, MIO_EN,
@@ -9,9 +10,10 @@ module datapath (
 );
 	logic [15:0] A, B, ALU, MARMUX, PC_In, addr2_out;
 	
+	// use this marmux to implement summing the PC/base reg and the sext(offset6-11)
 	assign MARMUX = (ADDR1MUX ? PC : A) + addr2_out;
 	
-
+	// init bus gates as a 4:1 MUX
 	bus_gates bg (
 		.Sel({GatePC, GateMDR, GateALU, GateMARMUX}),
 		.PC,
@@ -21,14 +23,16 @@ module datapath (
 		.Out_Bus(Bus)
 	);
 
+	// init the pc register, which takes load pc from ISDU and PC_in
 	reg_16 pc (
 		.Clk,
 		.Reset,
 		.Load(LD_PC),
-		.D(PC_In),
+		.D(PC_In), // PC_In is the output of a PC Mux, which chooses between 4 inputs to get the new value of PC
 		.Out(PC)
 	);
 	
+	// init the ir register, which takes load ir from ISDU and input from the Bus
 	reg_16 ir (
 		.Clk,
 		.Reset,
@@ -37,6 +41,7 @@ module datapath (
 		.Out(IR)
 	);
 	
+	// init the MAR register, takes load MAR from ISDU, and data from bus
 	reg_16 mar (
 		.Clk,
 		.Reset,
