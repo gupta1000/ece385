@@ -2,8 +2,8 @@
 // Company:        UIUC ECE Dept.
 // Engineer:       Stephen Kempf
 //
-// Create Date:    
-// Design Name:    ECE 385 Lab 6 Given Code - SLC-3 
+// Create Date:
+// Design Name:    ECE 385 Lab 6 Given Code - SLC-3
 // Module Name:    SLC3
 //
 // Comments:
@@ -11,8 +11,8 @@
 //    Spring 2007 Distribution
 //    Revised 07-26-2013
 //    Spring 2015 Distribution
-//    Revised 09-22-2015 
-//    Revised 10-19-2017 
+//    Revised 09-22-2015
+//    Revised 10-19-2017
 //    spring 2018 Distribution
 //
 //------------------------------------------------------------------------------
@@ -54,7 +54,7 @@ logic [3:0][3:0] hex_4;
 //HexDriver hex_driver1 (IR[7:4], HEX1);
 //HexDriver hex_driver0 (IR[3:0], HEX0);
 
-// For week 2, hexdrivers will be mounted to Mem2IO	
+// For week 2, hexdrivers will be mounted to Mem2IO
  HexDriver hex_driver3 (hex_4[3][3:0], HEX3);
  HexDriver hex_driver2 (hex_4[2][3:0], HEX2);
  HexDriver hex_driver1 (hex_4[1][3:0], HEX1);
@@ -72,6 +72,7 @@ HexDriver hex_driver4 (PC[3:0], HEX4);
 assign ADDR = { 4'b0000, MAR }; //Note, our external SRAM chip is 1Mx16, but address space is only 64Kx16
 assign MIO_EN = ~OE;
 
+// set the leds to the low 12 bits of the IR register if load is specified
 assign LED = (LD_LED) ? IR[11:0] : 12'b0;
 
 // You need to make your own datapath module and connect everything to the datapath
@@ -89,8 +90,8 @@ datapath d0 (
 	.LD_CC,
 	.LD_BEN,
 	.LD_REG,
-	.DRMUX, 
-	.SR1MUX, 
+	.DRMUX,
+	.SR1MUX,
 	.SR2MUX,
 	.ADDR1MUX,
 	.ALUK,
