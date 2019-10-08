@@ -50,57 +50,65 @@ module datapath (
 		.Out(MAR)
 	);
 
+	// init the MDR register
 	reg_16 mdr (
 		.Clk,
 		.Reset,
-		.Load(LD_MDR),
-		.D(MIO_EN ? MDR_In : Bus),
+		.Load(LD_MDR), // LD_MDR comes from the ISDU depending on the state
+		.D(MIO_EN ? MDR_In : Bus), // MIO_EN tells us when the Memory input output is enabled, and so if it is, we take the MDR_In
 		.Out(MDR)
 	);
 	
+	// init our nzp and ben module, which we did this together
 	nzp_ben nb (
 		.Clk,
 		.Reset,
-		.LD_NZP(LD_CC),
-		.LD_BEN,
-		.CC(IR[11:9]),
+		.LD_NZP(LD_CC), // LD_CC comes from the ISDU
+		.LD_BEN, // we also LD the BEN from the ISDU in one module
+		.CC(IR[11:9]), // grab the Condition code bits from the IR
 		.Bus,
-		.BEN
+		.BEN // outputs to our value of BEN
 	);
 	
+	// creates an addr_mux for the added value to our base register or PC value
+	// represents the SEXT(offset6-11)
 	mux_4_to_1 addr_mux(
-		.Sel(ADDR2MUX),
+		.Sel(ADDR2MUX), // sel bits come from ISDU
 		.A(16'h0000),
-		.B({{10{IR[5]}} ,IR[5:0]}),
-		.C({{7{IR[8]}} ,IR[8:0]}),
-		.D({{5{IR[10]}} ,IR[10:0]}),
+		.B({{10{IR[5]}} ,IR[5:0]}), // offset 6
+		.C({{7{IR[8]}} ,IR[8:0]}), // offset 9
+		.D({{5{IR[10]}} ,IR[10:0]}), // offset 11
 		.Out(addr2_out)
 	);
 	
+	// creates a PC mux with the inputs being different values of PC that we should be grabbing
 	mux_4_to_1 pc_mux(
-		.Sel(PCMUX),
-		.A(PC + 16'h0001),
+		.Sel(PCMUX), // sel bits come from ISDU
+		.A(PC + 16'h0001), // these 4 inputs come from different values of PC
 		.B(Bus),
 		.C(MARMUX),
 		.D(16'hXXXX),
 		.Out(PC_In)
 	);
+	
+	// init our reg file that stores the values into different registers
 	regfile rf (
 		.Clk,
 		.Reset,
-		.Load(LD_REG),
+		.Load(LD_REG), // from ISDU
 		.D_in(Bus),
-		.Sel_A(SR1MUX ? IR[11:9]:IR[8:6]),
+		.Sel_A(SR1MUX ? IR[11:9]:IR[8:6]), // from ISDU, tells what part of the IR is the SR1
 		.Sel_B(IR[2:0]),
 		.Sel_Dest(DRMUX ? 3'b111 : IR[11:9]),
 		.A,
 		.B		
 	);
 	
+	// init the ALU unit
 	alu alu (
-		.Sel(ALUK),
+		.Sel(ALUK), // sel bits come from the ISDU
 		.A,
-		.B(SR2MUX ? {{11{IR[4]}} ,IR[4:0]} : B),
+		.B(SR2MUX ? {{11{IR[4]}} ,IR[4:0]} : B), // we sign extend the bottom 5 bits if the sr2 mux is 1, else we take the B from the reg file
 		.Out(ALU)
 	);
 

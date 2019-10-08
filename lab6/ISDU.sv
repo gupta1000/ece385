@@ -135,8 +135,10 @@ module ISDU (   input logic         Clk,
 				Next_state = S_35;
 			S_35 : 
 				Next_state = S_32; // PauseIR1;
+			// parse the opcode and set the appropriate next state based upon the state diagram
 			S_32 : 
 				case (Opcode)
+				// opcodes include ADD, AND, NOT, BR, JSR, JMP, LDR, STR, and PAUSE
 					4'b0001 : 
 						Next_state = S_01;
 					4'b0101 :
@@ -168,6 +170,7 @@ module ISDU (   input logic         Clk,
 			// NOT
 			S_09 : Next_state = S_18;
 			
+			// for LDR and STR, we split up the memory access states into two (for example, 25_1, 25_2)
 			// LDR
 			S_06 : Next_state = S_25_1;
 			S_25_1 : Next_state = S_25_2;
@@ -189,14 +192,17 @@ module ISDU (   input logic         Clk,
 			
 			// BR
 			S_00 : 
+				// if we have branch enable, go to 22
 				if(BEN)
 					Next_state = S_22;
 				else
+				// else we go to 18 and restart
 					Next_state = S_18;
 			S_22 : Next_state = S_18;
 			
 			// PAUSE
 			PauseIR1 : 
+				// pause states based upon continue
 				if (~Continue) 
 					Next_state = PauseIR1;
 				else 
@@ -216,12 +222,14 @@ module ISDU (   input logic         Clk,
 		case (State)
 			Halted: ;
 			S_18 : 
+			// state 18, begins fetch
 				begin 
 					GatePC = 1'b1;
 					LD_MAR = 1'b1;
 					PCMUX = 2'b00;
 					LD_PC = 1'b1;
 				end
+			// does the memory output enable for getting and Loading MDR
 			S_33_1 : 
 				Mem_OE = 1'b0;
 			S_33_2 : 
@@ -242,8 +250,11 @@ module ISDU (   input logic         Clk,
 				begin
 					LD_BEN = 1'b1;
 				end
+			// BEGINS OUR CODE
+			
 			// ADD
 			S_01 : 
+				// sr2mux set, ALUK bits set for hte operation, set appropriate loads to do the ADD
 				begin 
 					SR2MUX = IR_5;
 					ALUK = 2'b01;
@@ -254,6 +265,7 @@ module ISDU (   input logic         Clk,
 				
 			// AND
 			S_05 : 
+				// sr2 mux set, ALUK bits set to do the correct AND operation, set appropriate values
 				begin 
 					SR2MUX = IR_5;
 					ALUK = 2'b10;
@@ -265,6 +277,7 @@ module ISDU (   input logic         Clk,
 			// NOT
 			S_09 : 
 				begin 
+				// set the SR2 mux in the IR, set the ALUK bits, do a NOT operation, set appropriate loads
 					SR2MUX = IR_5;
 					ALUK = 2'b11;
 					GateALU = 1'b1;
@@ -275,12 +288,14 @@ module ISDU (   input logic         Clk,
 			// LDR
 			S_06 : 
 				begin 
+				// gate the MARMUX to write a new value ot hte bus, load MAR, set the appropriate ADDR1 ADDR2 to get the marmux out
 					GateMARMUX = 1'b1;
 					LD_MAR = 1'b1;
 					ADDR1MUX = 1'b0;
 					ADDR2MUX = 2'b01;
 				end
 				
+				// memory step broken up
 			S_25_1 : 
 				Mem_OE = 1'b0;
 			
@@ -289,7 +304,8 @@ module ISDU (   input logic         Clk,
 					Mem_OE = 1'b0;
 					LD_MDR = 1'b1;
 				end
-			
+				
+				// gate the MDR so that we can set it and load the register values, set the DR Mux
 			S_27 :
 				begin
 					GateMDR = 1'b1;
@@ -301,6 +317,8 @@ module ISDU (   input logic         Clk,
 			// STR
 			S_07 :
 				begin
+				// begin store operation, gate the MARMUX, load it, add in the values
+				// we then use hte SR1MUX to tell where in the IR it is
 					GateMARMUX = 1'b1;
 					LD_MAR = 1'b1;
 					ADDR1MUX = 1'b0;
@@ -309,12 +327,14 @@ module ISDU (   input logic         Clk,
 				end
 			S_23:
 				begin
+				// perform an ALUK operation and load MDR
 					ALUK = 2'b00;
 					GateALU = 1'b1;
 					LD_MDR = 1'b1;
 					SR1MUX = 1'b1;
 				end
 			S_16_1:
+				// break up memory operations again, gate the MDR and load MAR
 				begin
 					Mem_WE = 1'b0;
 					GateMDR =1'b1;
@@ -328,11 +348,13 @@ module ISDU (   input logic         Clk,
 				
 			// JSR
 			S_04 :
+				// we jsr here by loading the Register and gating PC, to load R7
 				begin
 					LD_REG = 1'b1;
 					GatePC = 1'b1;
 					DRMUX = 1'b1;
 				end
+				// now we use the PC mux to get the new PC, and we set ADDR1, ADDR2 to move based on state machine
 			S_21 :
 				begin
 					PCMUX = 2'b10;
@@ -344,6 +366,7 @@ module ISDU (   input logic         Clk,
 			// JMP
 			S_12 :
 				begin
+				// Load PC from the PCMUX and use the ADDR1ADDR2 vals to jmp based upon state machine
 					PCMUX = 2'b10;
 					LD_PC =  1'b1;
 					ADDR1MUX = 1'b0;
@@ -353,6 +376,7 @@ module ISDU (   input logic         Clk,
 			// BR
 			S_00 : ;
 			S_22 :
+				// branch based upon PC val, use new Addr vals based upon fsm
 				begin
 					PCMUX = 2'b10;
 					LD_PC = 1'b1;
