@@ -1,0 +1,13 @@
+!SESSION 2019-10-10 17:17:07.769 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/16.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga/16.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.cdt.core 1 0 2019-10-10 17:21:25.584
+!MESSAGE Indexed 'lab7_app_bsp' (75 sources, 65 headers) in 2.41 sec: 1,075 declarations; 2,016 references; 91 unresolved inclusions; 6 syntax errors; 169 unresolved names (5.18%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2019-10-10 17:21:30.217
+!MESSAGE Indexed 'lab7_app' (0 sources, 0 headers) in 0.02 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0.00%)
