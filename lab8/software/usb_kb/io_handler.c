@@ -42,7 +42,6 @@ alt_u16 IO_read(alt_u8 Address)
 	*otg_hpi_address = Address;
 	// enable chip
 	*otg_hpi_cs = 0;
-
 	// signal beginning of read
 	*otg_hpi_r = 0;
 	// put data on bus to allow register to process write

@@ -19,7 +19,9 @@ module  ball ( input         Clk,                // 50 MHz clock
                              frame_clk,          // The clock indicating a new frame (~60Hz)
                input [9:0]   DrawX, DrawY,       // Current pixel coordinates
                input [7:0]   keycode,            // Value of current key pressed on keyboard
-               output logic  is_ball             // Whether current pixel belongs to ball or background
+               output logic  is_ball,            // Whether current pixel belongs to ball or background
+					// LED out
+					output logic[3:0]  LED
               );
 
     parameter [9:0] Ball_X_Center = 10'd320;  // Center position on the X axis
@@ -68,6 +70,23 @@ module  ball ( input         Clk,                // 50 MHz clock
     end
     //////// Do not modify the always_ff blocks. ////////
 
+	 // always ff for led
+	 always_ff @ (posedge Clk)
+	 begin
+		// handle keyboard buttons being pressed
+		case(keycode)
+		  UP_KEY:
+			 LED = 4'b0001;
+		  DOWN_KEY:
+			 LED = 4'b0010;
+		  LEFT_KEY:
+			 LED = 4'b0100;
+		  RIGHT_KEY:
+			 LED = 4'b1000;
+		  default: ; // ignore any other keys pressed
+		endcase
+	 end
+ 
     // You need to modify always_comb block.
     always_comb
     begin
@@ -80,23 +99,8 @@ module  ball ( input         Clk,                // 50 MHz clock
         // Update position and motion only at rising edge of frame clock
         if (frame_clk_rising_edge)
         begin
-            // Be careful when using comparators with "logic" datatype because compiler treats
-            //   both sides of the operator as UNSIGNED numbers.
-            // e.g. Ball_Y_Pos - Ball_Size <= Ball_Y_Min
-            // If Ball_Y_Pos is 0, then Ball_Y_Pos - Ball_Size will not be -4, but rather a large positive number.
-
-            // we fixed this by moving Ball_Size to the other side of the eq
-            if( Ball_Y_Pos >= Ball_Y_Max - Ball_Size)  // Ball is at the bottom edge, BOUNCE!
-                Ball_Y_Motion_in = (~(Ball_Y_Step) + 1'b1);  // 2's complement.
-            else if ( Ball_Y_Pos <= Ball_Y_Min + Ball_Size )  // Ball is at the top edge, BOUNCE!
-                Ball_Y_Motion_in = Ball_Y_Step;
-            // handle X bouncing
-            if( Ball_X_Pos >= Ball_X_Max - Ball_Size)  // Ball is at the bottom edge, BOUNCE!
-                Ball_X_Motion_in = (~(Ball_X_Step) + 1'b1);  // 2's complement.
-            else if ( Ball_X_Pos <= Ball_X_Min + Ball_Size )  // Ball is at the top edge, BOUNCE!
-                Ball_X_Motion_in = Ball_X_Step;
-
-            // handle keyboard buttons being pressed
+		  
+				// handle keyboard buttons being pressed
             case(keycode)
               UP_KEY:
               begin
@@ -107,7 +111,7 @@ module  ball ( input         Clk,                // 50 MHz clock
               begin
                 Ball_X_Motion_in = 10'b0;
                 Ball_Y_Motion_in = ((Ball_Y_Motion < 0) ? (~(Ball_Y_Step) + 1'b1) : (Ball_Y_Step));
-              end
+				  end
               LEFT_KEY:
               begin
                 Ball_Y_Motion_in = 10'b0;
@@ -120,10 +124,48 @@ module  ball ( input         Clk,                // 50 MHz clock
               end
               default: ; // ignore any other keys pressed
             endcase
+		  
+            // Be careful when using comparators with "logic" datatype because compiler treats
+            //   both sides of the operator as UNSIGNED numbers.
+            // e.g. Ball_Y_Pos - Ball_Size <= Ball_Y_Min
+            // If Ball_Y_Pos is 0, then Ball_Y_Pos - Ball_Size will not be -4, but rather a large positive number.
+
+            // we fixed this by moving Ball_Size to the other side of the eq
+            if( Ball_Y_Pos >= Ball_Y_Max - Ball_Size)  // Ball is at the bottom edge, BOUNCE!
+				begin
+                Ball_Y_Motion_in = (~(Ball_Y_Step) + 1'b1);  // 2's complement.
+					 Ball_X_Motion_in = 10'b0;
+				end
+            else if ( Ball_Y_Pos <= Ball_Y_Min + Ball_Size )  // Ball is at the top edge, BOUNCE!
+				begin
+                Ball_Y_Motion_in = Ball_Y_Step;
+					 Ball_X_Motion_in = 10'b0;
+            end
+				// handle X bouncing
+            if( Ball_X_Pos >= Ball_X_Max - Ball_Size)  // Ball is at the bottom edge, BOUNCE!
+				begin
+					 Ball_X_Motion_in = (~(Ball_X_Step) + 1'b1);  // 2's complement.
+					 Ball_Y_Motion_in = 10'b0;
+            end
+				else if ( Ball_X_Pos <= Ball_X_Min + Ball_Size )  // Ball is at the top edge, BOUNCE!
+            begin
+					 Ball_X_Motion_in = Ball_X_Step;
+					 Ball_Y_Motion_in = 10'b0;
+				end
 
             // Update the ball's position with its motion
             Ball_X_Pos_in = Ball_X_Pos + Ball_X_Motion;
             Ball_Y_Pos_in = Ball_Y_Pos + Ball_Y_Motion;
+				
+				if (Ball_X_Pos_in >= Ball_X_Max)
+					Ball_X_Pos_in = Ball_X_Max - 10'b1;
+				else if (Ball_X_Pos_in <= 0)
+					Ball_X_Pos_in = 10'b1;
+				if (Ball_Y_Pos_in >= Ball_Y_Max)
+					Ball_Y_Pos_in = Ball_Y_Max - 10'b1;
+				else if (Ball_Y_Pos_in <= 0)
+					Ball_Y_Pos_in = 10'b1;
+					
         end
 
         /**************************************************************************************

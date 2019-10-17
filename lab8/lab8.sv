@@ -43,11 +43,13 @@ module lab8( input               CLOCK_50,
                                  DRAM_CKE,     //SDRAM Clock Enable
                                  DRAM_WE_N,    //SDRAM Write Enable
                                  DRAM_CS_N,    //SDRAM Chip Select
-                                 DRAM_CLK      //SDRAM Clock
+                                 DRAM_CLK,     //SDRAM Clock
+				 output logic [3:0]  LED			  //LEDs
                     );
 
-    logic Reset_h, Clk;
+    logic Reset_h, Clk, is_ball;
     logic [7:0] keycode;
+	 logic [9:0] DrawX, DrawY;
 
     assign Clk = CLOCK_50;
     always_ff @ (posedge Clk) begin
