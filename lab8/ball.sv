@@ -18,9 +18,10 @@ module  ball ( input         Clk,                // 50 MHz clock
                              Reset,              // Active-high reset signal
                              frame_clk,          // The clock indicating a new frame (~60Hz)
                input [9:0]   DrawX, DrawY,       // Current pixel coordinates
+               input [7:0]   keycode,            // Value of current key pressed on keyboard
                output logic  is_ball             // Whether current pixel belongs to ball or background
               );
-    
+
     parameter [9:0] Ball_X_Center = 10'd320;  // Center position on the X axis
     parameter [9:0] Ball_Y_Center = 10'd240;  // Center position on the Y axis
     parameter [9:0] Ball_X_Min = 10'd0;       // Leftmost point on the X axis
@@ -30,10 +31,16 @@ module  ball ( input         Clk,                // 50 MHz clock
     parameter [9:0] Ball_X_Step = 10'd1;      // Step size on the X axis
     parameter [9:0] Ball_Y_Step = 10'd1;      // Step size on the Y axis
     parameter [9:0] Ball_Size = 10'd4;        // Ball size
-    
+
+    // values of various useful keycodes
+    parameter [7:0] UP_KEY    = 8'h1a;
+    parameter [7:0] DOWN_KEY  = 8'h16;
+    parameter [7:0] LEFT_KEY  = 8'h04;
+    parameter [7:0] RIGHT_KEY = 8'h07;
+
     logic [9:0] Ball_X_Pos, Ball_X_Motion, Ball_Y_Pos, Ball_Y_Motion;
     logic [9:0] Ball_X_Pos_in, Ball_X_Motion_in, Ball_Y_Pos_in, Ball_Y_Motion_in;
-    
+
     //////// Do not modify the always_ff blocks. ////////
     // Detect rising edge of frame_clk
     logic frame_clk_delayed, frame_clk_rising_edge;
@@ -60,7 +67,7 @@ module  ball ( input         Clk,                // 50 MHz clock
         end
     end
     //////// Do not modify the always_ff blocks. ////////
-    
+
     // You need to modify always_comb block.
     always_comb
     begin
@@ -69,39 +76,69 @@ module  ball ( input         Clk,                // 50 MHz clock
         Ball_Y_Pos_in = Ball_Y_Pos;
         Ball_X_Motion_in = Ball_X_Motion;
         Ball_Y_Motion_in = Ball_Y_Motion;
-        
+
         // Update position and motion only at rising edge of frame clock
         if (frame_clk_rising_edge)
         begin
-            // Be careful when using comparators with "logic" datatype because compiler treats 
+            // Be careful when using comparators with "logic" datatype because compiler treats
             //   both sides of the operator as UNSIGNED numbers.
-            // e.g. Ball_Y_Pos - Ball_Size <= Ball_Y_Min 
+            // e.g. Ball_Y_Pos - Ball_Size <= Ball_Y_Min
             // If Ball_Y_Pos is 0, then Ball_Y_Pos - Ball_Size will not be -4, but rather a large positive number.
-            if( Ball_Y_Pos + Ball_Size >= Ball_Y_Max )  // Ball is at the bottom edge, BOUNCE!
-                Ball_Y_Motion_in = (~(Ball_Y_Step) + 1'b1);  // 2's complement.  
+
+            // we fixed this by moving Ball_Size to the other side of the eq
+            if( Ball_Y_Pos >= Ball_Y_Max - Ball_Size)  // Ball is at the bottom edge, BOUNCE!
+                Ball_Y_Motion_in = (~(Ball_Y_Step) + 1'b1);  // 2's complement.
             else if ( Ball_Y_Pos <= Ball_Y_Min + Ball_Size )  // Ball is at the top edge, BOUNCE!
                 Ball_Y_Motion_in = Ball_Y_Step;
-            // TODO: Add other boundary detections and handle keypress here.
-        
-        
+            // handle X bouncing
+            if( Ball_X_Pos >= Ball_X_Max - Ball_Size)  // Ball is at the bottom edge, BOUNCE!
+                Ball_X_Motion_in = (~(Ball_X_Step) + 1'b1);  // 2's complement.
+            else if ( Ball_X_Pos <= Ball_X_Min + Ball_Size )  // Ball is at the top edge, BOUNCE!
+                Ball_X_Motion_in = Ball_X_Step;
+
+            // handle keyboard buttons being pressed
+            case(keycode)
+              UP_KEY:
+              begin
+                Ball_X_Motion_in = 10'b0;
+                Ball_Y_Motion_in = ((Ball_Y_Motion > 0) ? (~(Ball_Y_Step) + 1'b1) : (Ball_Y_Step));
+              end
+              DOWN_KEY:
+              begin
+                Ball_X_Motion_in = 10'b0;
+                Ball_Y_Motion_in = ((Ball_Y_Motion < 0) ? (~(Ball_Y_Step) + 1'b1) : (Ball_Y_Step));
+              end
+              LEFT_KEY:
+              begin
+                Ball_Y_Motion_in = 10'b0;
+                Ball_X_Motion_in = ((Ball_X_Motion > 0) ? (~(Ball_X_Step) + 1'b1) : (Ball_X_Step));
+              end
+              RIGHT_KEY:
+              begin
+                Ball_Y_Motion_in = 10'b0;
+                Ball_X_Motion_in = ((Ball_X_Motion < 0) ? (~(Ball_X_Step) + 1'b1) : (Ball_X_Step));
+              end
+              default: ; // ignore any other keys pressed
+            endcase
+
             // Update the ball's position with its motion
             Ball_X_Pos_in = Ball_X_Pos + Ball_X_Motion;
             Ball_Y_Pos_in = Ball_Y_Pos + Ball_Y_Motion;
         end
-        
+
         /**************************************************************************************
             ATTENTION! Please answer the following quesiton in your lab report! Points will be allocated for the answers!
             Hidden Question #2/2:
-               Notice that Ball_Y_Pos is updated using Ball_Y_Motion. 
-              Will the new value of Ball_Y_Motion be used when Ball_Y_Pos is updated, or the old? 
+               Notice that Ball_Y_Pos is updated using Ball_Y_Motion.
+              Will the new value of Ball_Y_Motion be used when Ball_Y_Pos is updated, or the old?
               What is the difference between writing
-                "Ball_Y_Pos_in = Ball_Y_Pos + Ball_Y_Motion;" and 
+                "Ball_Y_Pos_in = Ball_Y_Pos + Ball_Y_Motion;" and
                 "Ball_Y_Pos_in = Ball_Y_Pos + Ball_Y_Motion_in;"?
               How will this impact behavior of the ball during a bounce, and how might that interact with a response to a keypress?
               Give an answer in your Post-Lab.
         **************************************************************************************/
     end
-    
+
     // Compute whether the pixel corresponds to ball or background
     /* Since the multiplicants are required to be signed, we have to first cast them
        from logic to int (signed by default) before they are multiplied. */
@@ -110,13 +147,13 @@ module  ball ( input         Clk,                // 50 MHz clock
     assign DistY = DrawY - Ball_Y_Pos;
     assign Size = Ball_Size;
     always_comb begin
-        if ( ( DistX*DistX + DistY*DistY) <= (Size*Size) ) 
+        if ( ( DistX*DistX + DistY*DistY) <= (Size*Size) )
             is_ball = 1'b1;
         else
             is_ball = 1'b0;
-        /* The ball's (pixelated) circle is generated using the standard circle formula.  Note that while 
+        /* The ball's (pixelated) circle is generated using the standard circle formula.  Note that while
            the single line is quite powerful descriptively, it causes the synthesis tool to use up three
            of the 12 available multipliers on the chip! */
     end
-    
+
 endmodule
