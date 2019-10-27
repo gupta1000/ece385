@@ -1382,7 +1382,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1406,7 +1406,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1418,7 +1418,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1442,7 +1442,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1454,7 +1454,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1466,7 +1466,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1478,7 +1478,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1490,7 +1490,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1502,7 +1502,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1538,7 +1538,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1574,7 +1574,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1598,7 +1598,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1610,7 +1610,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1634,7 +1634,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1646,7 +1646,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1670,7 +1670,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1682,7 +1682,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1694,7 +1694,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1706,7 +1706,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1718,7 +1718,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1730,7 +1730,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1754,7 +1754,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1766,7 +1766,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1790,7 +1790,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1802,7 +1802,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1814,7 +1814,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1826,7 +1826,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1838,7 +1838,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1862,7 +1862,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1874,7 +1874,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1898,7 +1898,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1910,7 +1910,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1922,7 +1922,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1934,7 +1934,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1946,7 +1946,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1958,7 +1958,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -1994,7 +1994,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -2006,7 +2006,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -2042,7 +2042,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -2054,7 +2054,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -2066,7 +2066,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -2078,7 +2078,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -2102,7 +2102,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -2128,7 +2128,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -2140,7 +2140,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -2176,7 +2176,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -2188,7 +2188,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -2200,7 +2200,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -2296,7 +2296,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -2308,7 +2308,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -2320,7 +2320,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -2332,7 +2332,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
@@ -2344,7 +2344,7 @@
 						<entry kind="includePath" name="/aes_bsp/HAL/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>
-						<entry kind="includePath" name="C:/ECE385/lab9/software/aes_bsp"/>
+						<entry kind="includePath" name="C:/ece385/lab9/software/aes_bsp"/>
 						<entry kind="includePath" name="/aes_bsp/drivers/inc">
 							<flag value="VALUE_WORKSPACE_PATH|RESOLVED"/>
 						</entry>

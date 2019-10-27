@@ -20,7 +20,7 @@ University of Illinois ECE Department
 #define KEY_BYTES 16
 
 // Pointer to base address of AES module, make sure it matches Qsys
-volatile unsigned int * AES_PTR = (unsigned int *) 0x00000100;
+volatile unsigned int * AES_PTR = (unsigned int *) 0x00000040;
 
 // Execution mode: 0 for testing, 1 for benchmarking
 int run_mode = 0;
@@ -159,6 +159,29 @@ void debug(unsigned char *in, int size){
 	printf("\n");
 }
 
+void sendToAES(unsigned int *key, unsigned int *msg) {
+	printf("%08x\n", AES_PTR[0]);
+	printf("%08x\n", AES_PTR[1]);
+	printf("%08x\n", AES_PTR[2]);
+	printf("%08x\n", AES_PTR[3]);
+	AES_PTR[0] = key[0];
+	AES_PTR[1] = key[1];
+	AES_PTR[2] = key[2];
+	AES_PTR[3] = key[3];
+//	AES_PTR[0] = msg[0];
+//	AES_PTR[1] = msg[1];
+//	AES_PTR[2] = msg[2];
+//	AES_PTR[3] = msg[3];
+//	AES_PTR[0] = 0xffffffff;
+//	AES_PTR[1] = 0xffffffff;
+//	AES_PTR[2] = 0xffffffff;
+//	AES_PTR[3] = 0xffffffff;
+	printf("\n%08x\n", AES_PTR[0]);
+	printf("%08x\n", AES_PTR[1]);
+	printf("%08x\n", AES_PTR[2]);
+	printf("%08x\n", AES_PTR[3]);
+}
+
 /** encrypt
  *  Perform AES encryption in software.
  *
@@ -178,7 +201,7 @@ void encrypt(unsigned char * msg_ascii, unsigned char * key_ascii, unsigned int 
 	keyExpansion(key_c, key_s);
 //	debug(key_s, KEY_BYTES * (N_r + 1));
 	addRoundKey(state, key_s);
-	debug(state, 16);
+//	debug(state, 16);
 
 	for(int i = 1; i < N_r; i++){
 //		printf("Value of i: %d \n", i);
@@ -193,15 +216,16 @@ void encrypt(unsigned char * msg_ascii, unsigned char * key_ascii, unsigned int 
 	}
 
 	subBytes(state);
-	debug(state, 16);
+//	debug(state, 16);
 	shiftRows(state);
-	debug(state, 16);
+//	debug(state, 16);
 	addRoundKey(state, key_s + N_r*KEY_BYTES);
-	debug(state, 16);
+//	debug(state, 16);
 
 	// flip endian-ness when converting from char[] to int[]
 	for (int i = 0; i < 4; i++) {
 		msg_enc[i] &= 0x0;
+		key[i] &= 0x0;
 		for (int j = 0; j < 4; j++) {
 			msg_enc[i] |= ((unsigned int)(state[4*i+j])) << (24-8*j);
 			key[i] |= ((unsigned int)(key_c[4*i+j])) << (24-8*j);
@@ -238,6 +262,26 @@ int main()
 	printf("Select execution mode: 0 for testing, 1 for benchmarking: ");
 	scanf("%d", &run_mode);
 
+//	printf("%08x\n", AES_PTR[0]);
+//	printf("%08x\n", AES_PTR[1]);
+//	printf("%08x\n", AES_PTR[2]);
+//	printf("%08x\n", AES_PTR[3]);
+//	AES_PTR[0] = 0x000000ff;
+//	AES_PTR[1] = 0x000000ff;
+//	AES_PTR[2] = 0x000000ff;
+//	AES_PTR[3] = 0xaabbccdd;
+//	if(AES_PTR[0] != 0x000000ff)
+//		printf("0 is bad");
+//	if(AES_PTR[1] != 0x000000ff)
+//		printf("1 is bad");
+//	if(AES_PTR[2] != 0x000000ff)
+//		printf("2 is bad");
+//	if(AES_PTR[3] != 0xaabbccdd)
+//		printf("3 is bad");
+//	printf("%08x\n", AES_PTR[0]);
+//	printf("%08x\n", AES_PTR[1]);
+//	printf("%08x\n", AES_PTR[2]);
+//	printf("%08x\n", AES_PTR[3]);
 	if (run_mode == 0) {
 		// Continuously Perform Encryption and Decryption
 		while (1) {
@@ -254,10 +298,19 @@ int main()
 				printf("%08x", msg_enc[i]);
 			}
 			printf("\n");
+
+			sendToAES(key, msg_enc);
+
 			decrypt(msg_enc, msg_dec, key);
 			printf("\nDecrypted message is: \n");
 			for(i = 0; i < 4; i++){
 				printf("%08x", msg_dec[i]);
+			}
+			printf("\n");
+
+			printf("\nUsing following key: \n");
+			for(i = 0; i < 4; i++){
+				printf("%08x", key[i]);
 			}
 			printf("\n");
 		}
