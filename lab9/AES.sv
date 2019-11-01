@@ -19,7 +19,7 @@ module AES (
 
 enum logic [3:0] {START, INIT, INIT_ARK, ISR, ISB, ARK, IMC0, IMC1, IMC2, IMC3, IMC_FIN, LAST_ISR, LAST_ISB, LAST_ARK, FIN} state, next_state;
 
-logic [3:0] round, next_round;
+logic [3:0] round, next_round, keygen, next_keygen;
 
 logic [1:0] msg_mux_sel, imc_col;
 
@@ -28,23 +28,29 @@ logic [1407:0] key_s;
 
 logic [31:0] imc_in, imc_out_word;
 
+logic load_state;
+
 always_ff @(posedge CLK)
 begin
 	if (RESET)
 	begin
 		state <= START;
 		round <= 4'b0;
+		keygen <= 4'b0;
 	end
 	else
 	begin
 		state <= next_state;
 		round <= next_round;
+		keygen <= next_keygen;
 	end
 	
 	if (state == INIT)
 		msg_state <= AES_MSG_ENC;
 	else 
-		msg_state <= msg_mux_out;
+		msg_state <= load_state ? msg_mux_out : msg_state;
+		
+	AES_MSG_DEC = msg_state; // AES_DONE ? msg_state : 128'b0;
 
 end
 
@@ -61,7 +67,13 @@ begin
 				next_state = INIT;
 		end
 		
-		INIT: next_state = INIT_ARK;
+		INIT:
+		begin
+			if (keygen >= 4'd10)
+				next_state = INIT_ARK;
+			else
+				next_state = INIT;
+		end
 		
 		INIT_ARK: next_state = ISR;
 		
@@ -93,31 +105,47 @@ begin
 	AES_DONE = 1'b0;
 	AES_MSG_DEC = 128'b0;
 	msg_mux_sel = 2'b00;
-	next_round = 4'b0;
+	next_round = round;
+	next_keygen = keygen;
 	imc_col = 2'b00;
+	load_state = 1'b0;
 	
 	// output logic
 	case (state)
+	
+		START:
+		begin
+			next_keygen = 4'b0;
+		end
+	
+		INIT:
+		begin
+			next_keygen = keygen + 4'b1;
+		end
 		
 		INIT_ARK:
 		begin
 			msg_mux_sel = 2'b00;
 			next_round = round + 4'b1;
+			load_state = 1'b1;
 		end
 		
 		ISR:
 		begin
 			msg_mux_sel = 2'b01;
+			load_state = 1'b1;
 		end
 		
 		ISB:
 		begin
 			msg_mux_sel = 2'b10;
+			load_state = 1'b1;
 		end
 		
 		ARK:
 		begin
 			msg_mux_sel = 2'b00;
+			load_state = 1'b1;
 		end
 		
 		IMC0:
@@ -144,11 +172,11 @@ begin
 		begin
 			msg_mux_sel = 2'b11;
 			next_round = round + 4'b1;
+			load_state = 1'b1;
 		end
 		
 		FIN:
 		begin
-			AES_MSG_DEC = msg_state;
 			AES_DONE = 1'b1;
 		end
 		
@@ -159,13 +187,13 @@ begin
 end
 
 // simple mux for updating msg_state
-always_ff @(posedge CLK)
+always_comb
 begin
 	case (msg_mux_sel)
-		2'b00: msg_mux_out <= ark_out;
-		2'b01: msg_mux_out <= isr_out;
-		2'b10: msg_mux_out <= isb_out;
-		2'b11: msg_mux_out <= imc_out;
+		2'b00: msg_mux_out = ark_out;
+		2'b01: msg_mux_out = isr_out;
+		2'b10: msg_mux_out = isb_out;
+		2'b11: msg_mux_out = imc_out;
 	endcase
 end
 
@@ -191,29 +219,24 @@ InvSubBytes isb_module_14 (CLK, msg_state[119:112], isb_out[119:112]);
 InvSubBytes isb_module_15 (CLK, msg_state[127:120], isb_out[127:120]);
 
 // simple mux for passing words into imc_module
+always_comb
+begin
+	case (imc_col)
+		2'b00: imc_in = msg_state[31:0];
+		2'b01: imc_in = msg_state[63:32];
+		2'b10: imc_in = msg_state[95:64];
+		2'b11: imc_in = msg_state[127:96];
+	endcase
+end
+
+// another simple mux for storing output from imc_module
 always_ff @(posedge CLK)
 begin
 	case (imc_col)
-		2'b00:
-		begin 
-			imc_in <= msg_state[31:0];
-			imc_out[31:0] <= imc_out_word;
-		end
-		2'b01:
-		begin 
-			imc_in <= msg_state[63:32];
-			imc_out[63:32] <= imc_out_word;
-		end
-		2'b10:
-		begin 
-			imc_in <= msg_state[95:64];
-			imc_out[95:64] <= imc_out_word;
-		end
-		2'b11:
-		begin 
-			imc_in <= msg_state[127:96];
-			imc_out[127:96] <= imc_out_word;
-		end
+		2'b00: imc_out[31:0] = imc_out_word;
+		2'b01: imc_out[63:32] = imc_out_word;
+		2'b10: imc_out[95:64] = imc_out_word;
+		2'b11: imc_out[127:96] = imc_out_word;
 	endcase
 end
 

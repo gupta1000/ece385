@@ -35,18 +35,18 @@ end
 initial begin: TEST_VECTORS
 
 	// init the state of the essential signals in simulation
-	RESET = 0;
-	#20 AES_START = 1'b0;
+	RESET = 1;
+	#2 AES_START = 1'b0;
 
 	// set values
-	#20 AES_KEY = 128'h000102030405060708090a0b0c0d0e0f;
-	#20 AES_MSG_ENC = 128'hdaec3055df058e1c39e814ea76f6747e;
+	#2 AES_KEY = 128'h000102030405060708090a0b0c0d0e0f;
+	#2 AES_MSG_ENC = 128'hdaec3055df058e1c39e814ea76f6747e;
 
-	#20 RESET = 1;
+	#2 RESET = 0;
 
 	// start program
-	#20 AES_START = 1'b1;
-	#20 AES_START = 1'b0;
+	#2 AES_START = 1'b1;
+	#2 AES_START = 1'b0;
 
 end
 endmodule

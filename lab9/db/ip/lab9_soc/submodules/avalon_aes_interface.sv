@@ -40,8 +40,7 @@ module avalon_aes_interface (
 
 	logic [31:0] d[16];
 	
-//	logic i = 0;
-//	logic j = 0;
+	logic fin;
 	
 	assign EXPORT_DATA = {d[0][31:16],d[3][15:0]};
 	assign AVL_READDATA = (AVL_CS && AVL_READ) ? d[AVL_ADDR] : AVL_READDATA;
@@ -69,13 +68,44 @@ module avalon_aes_interface (
 			endcase
 		end
 		
-//		i = i + 1;
-//		if (i % 100000000)
-//		begin
-//			EXPORT_DATA <= d[j % 16];
-//			j = j + 1;
-//		end
+		if ()
 		
 	end
+	
+	AES aes (
+		.*
+		.AES_START(d[14][0]),
+		.AES_DONE(d[15][0]),
+		.AES_KEY({
+			d[0][32:16],
+			d[0][15:0],
+			d[1][32:16],
+			d[1][15:0],
+			d[2][32:16],
+			d[2][15:0],
+			d[3][32:16],
+			d[3][15:0],
+		}),
+		.AES_MSG_ENC({
+			d[4][32:16],
+			d[4][15:0],
+			d[5][32:16],
+			d[5][15:0],
+			d[6][32:16],
+			d[6][15:0],
+			d[7][32:16],
+			d[7][15:0],
+		}),
+		.AES_MSG_DEC({
+			d[8][32:16],
+			d[8][15:0],
+			d[9][32:16],
+			d[9][15:0],
+			d[10][32:16],
+			d[10][15:0],
+			d[11][32:16],
+			d[11][15:0],
+		})
+);
 	
 endmodule
