@@ -1,5 +1,5 @@
 Flow report for lab8
-Thu Oct 31 20:02:50 2019
+Mon Nov 04 16:29:51 2019
 Quartus Prime Version 18.0.0 Build 614 04/24/2018 SJ Lite Edition
 
 
@@ -40,22 +40,22 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +------------------------------------+---------------------------------------------+
-; Flow Status                        ; Flow Failed - Thu Oct 31 20:02:50 2019      ;
+; Flow Status                        ; Successful - Mon Nov 04 16:29:51 2019       ;
 ; Quartus Prime Version              ; 18.0.0 Build 614 04/24/2018 SJ Lite Edition ;
 ; Revision Name                      ; lab8                                        ;
 ; Top-level Entity Name              ; lab9_top                                    ;
 ; Family                             ; Cyclone IV E                                ;
 ; Device                             ; EP4CE115F29C7                               ;
 ; Timing Models                      ; Final                                       ;
-; Total logic elements               ; N/A until Partition Merge                   ;
-;     Total combinational functions  ; N/A until Partition Merge                   ;
-;     Dedicated logic registers      ; N/A until Partition Merge                   ;
-; Total registers                    ; N/A until Partition Merge                   ;
-; Total pins                         ; N/A until Partition Merge                   ;
-; Total virtual pins                 ; N/A until Partition Merge                   ;
-; Total memory bits                  ; N/A until Partition Merge                   ;
-; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                   ;
-; Total PLLs                         ; N/A until Partition Merge                   ;
+; Total logic elements               ; 6,754 / 114,480 ( 6 % )                     ;
+;     Total combinational functions  ; 5,848 / 114,480 ( 5 % )                     ;
+;     Dedicated logic registers      ; 3,013 / 114,480 ( 3 % )                     ;
+; Total registers                    ; 3132                                        ;
+; Total pins                         ; 142 / 529 ( 27 % )                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 126,080 / 3,981,312 ( 3 % )                 ;
+; Embedded Multiplier 9-bit elements ; 0 / 532 ( 0 % )                             ;
+; Total PLLs                         ; 1 / 4 ( 25 % )                              ;
 +------------------------------------+---------------------------------------------+
 
 
@@ -64,7 +64,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 10/31/2019 20:02:39 ;
+; Start date & time ; 11/04/2019 16:24:55 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; lab8                ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ refer to the applicable agreement for further details.
 +--------------------------------------+------------------------------------------------------------+---------------+-----------------+----------------+
 ; Assignment Name                      ; Value                                                      ; Default Value ; Entity Name     ; Section Id     ;
 +--------------------------------------+------------------------------------------------------------+---------------+-----------------+----------------+
-; COMPILER_SIGNATURE_ID                ; 71094331157831.157257015813108                             ; --            ; --              ; --             ;
+; COMPILER_SIGNATURE_ID                ; 215729420104445.157290629211984                            ; --            ; --              ; --             ;
 ; EDA_DESIGN_INSTANCE_NAME             ; NA                                                         ; --            ; --              ; testbench      ;
 ; EDA_NATIVELINK_SIMULATION_TEST_BENCH ; testbench                                                  ; --            ; --              ; eda_simulation ;
 ; EDA_OUTPUT_DATA_FORMAT               ; Verilog Hdl                                                ; --            ; --              ; eda_simulation ;
@@ -103,7 +103,7 @@ refer to the applicable agreement for further details.
 ; POWER_PRESET_COOLING_SOLUTION        ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                      ; --            ; --              ; --             ;
 ; SLD_FILE                             ; lab9_soc/synthesis/lab9_soc.regmap                         ; --            ; --              ; --             ;
 ; SLD_FILE                             ; lab9_soc/synthesis/lab9_soc.debuginfo                      ; --            ; --              ; --             ;
-; SLD_INFO                             ; QSYS_NAME lab9_soc HAS_SOPCINFO 1 GENERATION_ID 1572569547 ; --            ; lab9_soc        ; --             ;
+; SLD_INFO                             ; QSYS_NAME lab9_soc HAS_SOPCINFO 1 GENERATION_ID 1572906200 ; --            ; lab9_soc        ; --             ;
 ; SOPCINFO_FILE                        ; lab9_soc/synthesis/../../lab9_soc.sopcinfo                 ; --            ; --              ; --             ;
 ; SYNTHESIS_ONLY_QIP                   ; On                                                         ; --            ; --              ; --             ;
 ; TOP_LEVEL_ENTITY                     ; lab9_top                                                   ; lab8          ; --              ; --             ;
@@ -115,8 +115,12 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:13     ; 1.0                     ; 4759 MB             ; 00:00:23                           ;
-; Total                ; 00:00:13     ; --                      ; --                  ; 00:00:23                           ;
+; Analysis & Synthesis ; 00:01:54     ; 1.0                     ; 4980 MB             ; 00:01:19                           ;
+; Fitter               ; 00:01:04     ; 1.1                     ; 5915 MB             ; 00:01:37                           ;
+; Assembler            ; 00:00:10     ; 1.0                     ; 4736 MB             ; 00:00:04                           ;
+; Timing Analyzer      ; 00:00:14     ; 1.2                     ; 4953 MB             ; 00:00:08                           ;
+; EDA Netlist Writer   ; 00:00:37     ; 1.0                     ; 4780 MB             ; 00:00:09                           ;
+; Total                ; 00:03:59     ; --                      ; --                  ; 00:03:17                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -125,7 +129,11 @@ refer to the applicable agreement for further details.
 +----------------------+------------------+------------+------------+----------------+
 ; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +----------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis ; ECEB-3022-08     ; Windows 10 ; 10.0       ; x86_64         ;
+; Analysis & Synthesis ; ECEB-3022-17     ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; ECEB-3022-17     ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; ECEB-3022-17     ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; ECEB-3022-17     ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer   ; ECEB-3022-17     ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
 
 
@@ -133,6 +141,10 @@ refer to the applicable agreement for further details.
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off lab9 -c lab8
+quartus_fit --read_settings_files=off --write_settings_files=off lab9 -c lab8
+quartus_asm --read_settings_files=off --write_settings_files=off lab9 -c lab8
+quartus_sta lab9 -c lab8
+quartus_eda --read_settings_files=off --write_settings_files=off lab9 -c lab8
 
 
 

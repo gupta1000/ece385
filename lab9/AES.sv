@@ -50,7 +50,7 @@ begin
 	else 
 		msg_state <= load_state ? msg_mux_out : msg_state;
 		
-	AES_MSG_DEC = msg_state; // AES_DONE ? msg_state : 128'b0;
+	AES_MSG_DEC = msg_state;
 
 end
 
@@ -103,7 +103,6 @@ begin
 	
 	//default outputs
 	AES_DONE = 1'b0;
-	AES_MSG_DEC = 128'b0;
 	msg_mux_sel = 2'b00;
 	next_round = round;
 	next_keygen = keygen;

@@ -232,7 +232,24 @@ void decrypt(unsigned int * msg_enc, unsigned int * msg_dec, unsigned int * key)
 	AES_PTR[14] = 0xffffffff;
 	AES_PTR[14] = 0x0;
 
-	while (AES_PTR[15] == 0);
+	while (AES_PTR[15] == 0) {
+
+		printf("\n");
+		for(int i = 0; i < 4; i++){
+			printf("%08x", AES_PTR[i]);
+		};
+		printf(" ");
+		for(int i = 0; i < 4; i++){
+			printf("%08x", AES_PTR[i+4]);
+		};
+		printf(" ");
+		for(int i = 0; i < 4; i++){
+			printf("%08x", AES_PTR[i+8]);
+		};
+
+	}
+
+
 
 	msg_dec[0] = AES_PTR[8];
 	msg_dec[1] = AES_PTR[9];
