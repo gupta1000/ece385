@@ -1,6 +1,6 @@
 #define ROWS 20
 #define COLS 10
-#define REFRESH 400
+#define REFRESH 100
 #define REFRESH_KB 1000
 
 #define RED 1
