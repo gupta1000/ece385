@@ -4,7 +4,7 @@ OBJS = main.o tetris.o
 CXX = gcc
 CXXFLAGS = -c -g -O0 -Wall -Wextra -pedantic
 LD = clang
-LDFLAGS = -lpng -lpthread -lm
+LDFLAGS = -lpng -lpthread -lm -lncurses
 
 all : $(EXENAME)
 
