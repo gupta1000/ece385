@@ -8,14 +8,22 @@
 #define GREEN 3
 #define YELLOW 4
 
+#define UP_KEY 0x52
+#define DOWN_KEY 0x51
+#define LEFT_KEY 0x50
+#define RIGHT_KEY 0x4f
+#define SPACE_KEY 0x2c
+
 volatile int kb_char;
 volatile int game;
 volatile time_t now;
+
+volatile unsigned char * TETRIS_PTR = (unsigned char *) 0x01000;
+
+int kb_buf[1000];
 char board[ROWS][COLS];
 
 int pp, px, py, pr;
-
-void tetris();
 
 int is_valid(int p, int r, int x, int y);
 
@@ -33,9 +41,7 @@ void next_piece();
 
 void commit2board(int p, int r, int x, int y);
 
-void print_board();
-
-void * kb_thread();
+void draw2hardware();
 
 int pieces[7][4][4][4] = {
   // tall
