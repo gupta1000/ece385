@@ -210,6 +210,17 @@ void encrypt(unsigned char * msg_ascii, unsigned char * key_ascii, unsigned int 
 	}
 }
 
+void printAES(){
+	for(int i = 0; i < 4; i++){
+		printf("\n");
+		for(int j = 0; j < 4; j++){
+			printf("%08x", AES_PTR[4*i + j]);
+		}
+		printf(" ");
+	}
+	printf("\n");
+}
+
 /** decrypt
  *  Perform AES decryption in hardware.
  *
@@ -230,32 +241,25 @@ void decrypt(unsigned int * msg_enc, unsigned int * msg_dec, unsigned int * key)
 	AES_PTR[7] = msg_enc[3];
 
 	AES_PTR[14] = 0xffffffff;
-	AES_PTR[14] = 0x0;
+	for (int i = 0; i < 5000; i++);
+//	printAES();
 
-	while (AES_PTR[15] == 0) {
-
-		printf("\n");
-		for(int i = 0; i < 4; i++){
-			printf("%08x", AES_PTR[i]);
-		};
-		printf(" ");
-		for(int i = 0; i < 4; i++){
-			printf("%08x", AES_PTR[i+4]);
-		};
-		printf(" ");
-		for(int i = 0; i < 4; i++){
-			printf("%08x", AES_PTR[i+8]);
-		};
-
+	while ((AES_PTR[15] & 0x1) == 0){
+//		printf("\n");
+//		for(int i=0; i < 4; i++){
+//			printf("%08x", AES_PTR[8+i]);
+//		}
 	}
 
-
+	AES_PTR[14] = 0x0;
+//	printAES();
 
 	msg_dec[0] = AES_PTR[8];
 	msg_dec[1] = AES_PTR[9];
 	msg_dec[2] = AES_PTR[10];
 	msg_dec[3] = AES_PTR[11];
 }
+
 
 /** main
  *  Allows the user to enter the message, key, and select execution mode
@@ -324,8 +328,11 @@ int main()
 		printf("Software Encryption Speed: %f KB/s \n", speed);
 		// Run Decryption
 		begin = clock();
-		for (i = 0; i < size_KB * 64; i++)
+		for (i = 0; i < size_KB * 64; i++){
+//			printf(".");
 			decrypt(msg_enc, msg_dec, key);
+		}
+
 		end = clock();
 		time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
 		speed = size_KB / time_spent;
