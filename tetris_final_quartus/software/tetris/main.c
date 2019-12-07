@@ -27,7 +27,7 @@
 
 #include "tetris.h"
 
-volatile unsigned char * TETRIS_PTR = (unsigned char *) 0x01000;
+volatile unsigned int * TETRIS_PTR = (unsigned char *) 0x01000;
 
 //----------------------------------------------------------------------------------------//
 //
@@ -47,6 +47,7 @@ int main(void)
 		usleep(10*10000);
 	}*/
 
+
 	alt_u16 intStat;
 	alt_u16 usb_ctl_val;
 	static alt_u16 ctl_reg = 0;
@@ -58,8 +59,16 @@ int main(void)
 	alt_u8 hot_plug_count;
 	alt_u16 code;
 
-	time_t last_exe;
-	time_t last_kb;
+	unsigned long long last_exe;
+	unsigned long long last_kb;
+	unsigned long long last_drop;
+	unsigned long long last_rot;
+
+	clear_board();
+	draw2hardware(TETRIS_PTR);
+
+	time_t t;
+	srand((unsigned) time(&t));
 
 	printf("USB keyboard setup...\n\n");
 
@@ -514,7 +523,7 @@ int main(void)
 			IO_write(HPI_DATA,0x0013);//8
 			IO_write(HPI_DATA,0x0000);//
 			UsbWrite(HUSB_SIE1_pCurrentTDPtr,0x0500); //HUSB_SIE1_pCurrentTDPtr
-			usleep(10*1000);
+//			usleep(10*1000);
 		}//end while
 
 		usb_ctl_val = UsbWaitTDListDone();
@@ -522,12 +531,13 @@ int main(void)
 		// The first two keycodes are stored in 0x051E. Other keycodes are in
 		// subsequent addresses.
 		keycode = UsbRead(0x051e);
-		printf("\nfirst two keycode values are %04x\n",keycode);
+//		printf("\nfirst two keycode values are %04x\n",keycode);
 		// We only need the first keycode, which is at the lower byte of keycode.
 		// Send the keycode to hardware via PIO.
 		*keycode_base = keycode & 0xff;
+		kb_char = keycode & 0xff;
 
-		usleep(200);//usleep(5000);
+//		usleep(200);//usleep(5000);
 		usb_ctl_val = UsbRead(ctl_reg);
 
 		if(!(usb_ctl_val & no_device))
@@ -564,30 +574,49 @@ int main(void)
 
 		//////////////////////////////// TETRIS ////////////////////////////////////
 
-		// get system time in ms
-		struct timeval tv;
-		gettimeofday(&tv,NULL);
-		now = (((long long)tv.tv_sec)*1000)+(tv.tv_usec/1000);
+		now++;
+
+		if (!game) {
+			clear_board();
+			game = 1;
+			next_piece();
+			score = 0;
+		}
 
 		if (now - last_kb > REFRESH_KB) {
 		  last_kb = now;
 
 		  switch (kb_char) {
-			case UP_KEY: rotate(); break;
+			case UP_KEY:
+				if (now - last_rot > REFRESH_KB * 4) {
+					last_rot = now;
+					rotate();
+				}
+				break;
 			case DOWN_KEY: move_down(); break;
 			case LEFT_KEY: move_left(); break;
 			case RIGHT_KEY: move_right(); break;
-			case SPACE_KEY: drop(); break;
+			case SPACE_KEY:
+				if (now - last_drop > REFRESH_KB * 4) {
+					last_drop = now;
+					drop();
+				}
+				break;
 			default: break;
 		  }
+		  draw2hardware(TETRIS_PTR);
 		}
 
 		if (now - last_exe > REFRESH) {
-		  printf("movnig");
 		  last_exe = now;
-
 		  move_down();
-				draw2hardware(TETRIS_PTR);
+
+		  draw2hardware(TETRIS_PTR);
+		}
+
+		if (del_white && now - del_white > REFRESH_KB) {
+		  delete_rows();
+		  draw2hardware(TETRIS_PTR);
 		}
 
 		////////////////////////////// END TETRIS //////////////////////////////////

@@ -22,15 +22,22 @@ module  grid ( input         			Clk, Reset, frame_clk,
 
 	always_comb
 	begin
-
-		grid_x = DrawX >> 4;
-		grid_y = DrawY >> 4;
+		
+		if (DrawX >= 240)
+			grid_x = (DrawX - 240) >> 4;
+		else
+			grid_x = 10'b1111111111;
+			
+		if (DrawY >= 80)
+			grid_y = (DrawY - 80) >> 4;
+		else
+			grid_y = 10'b1111111111;
 
 	end
 
 	always_comb
 	begin
-		rowdata = 40'b0;
+		rowdata = 40'hffffffffff;
 		case (grid_y)
 			10'd0: rowdata = tetris_grid[39:0];
 			10'd1: rowdata = tetris_grid[79:40];
@@ -58,7 +65,7 @@ module  grid ( input         			Clk, Reset, frame_clk,
 
 	always_comb
 	begin
-		color_in = 3'b0;
+		color_in = 3'b111;
 		case (grid_x)
 			10'd0: color_in = rowdata[2:0];
 			10'd1: color_in = rowdata[6:4];

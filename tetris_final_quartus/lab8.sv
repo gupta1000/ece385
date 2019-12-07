@@ -15,7 +15,7 @@
 
 module lab8( input               CLOCK_50,
              input        [3:0]  KEY,          //bit 0 is set up as Reset
-             output logic [6:0]  HEX0, HEX1,
+             output logic [6:0]  HEX0, HEX1, HEX2, HEX3,
              // VGA Interface
              output logic [7:0]  VGA_R,        //VGA Red
                                  VGA_G,        //VGA Green
@@ -136,7 +136,9 @@ module lab8( input               CLOCK_50,
     );
 
     // Display keycode on hex display
-    HexDriver hex_inst_0 (DrawY[3:0], HEX0);
-    HexDriver hex_inst_1 ({1'b0, color}, HEX1);
+    HexDriver hex_inst_0 (tetris_data[995:992], HEX0);
+    HexDriver hex_inst_1 (tetris_data[999:996], HEX1);
+	 HexDriver hex_inst_2 (tetris_data[1003:1000], HEX2);
+    HexDriver hex_inst_3 (tetris_data[1007:1004], HEX3);
 
 endmodule

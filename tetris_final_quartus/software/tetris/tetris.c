@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <string.h>
 #include "tetris.h"
 
@@ -174,9 +175,9 @@ int pieces[7][4][4][4] = {
 	  { 0x00, 0x00, 0x00, 0x00 },
 	},
 	{
-	  { 0x00, 0x00, 0x12, 0x00 },
+	  { 0x00, 0x00, 0x00, 0x00 },
+	  { 0x12, 0x12, 0x00, 0x00 },
 	  { 0x00, 0x12, 0x12, 0x00 },
-	  { 0x00, 0x12, 0x00, 0x00 },
 	  { 0x00, 0x00, 0x00, 0x00 },
 	},
 	{
@@ -186,11 +187,11 @@ int pieces[7][4][4][4] = {
 	  { 0x00, 0x00, 0x00, 0x00 },
 	},
 	{
-	  { 0x00, 0x00, 0x12, 0x00 },
-	  { 0x00, 0x12, 0x12, 0x00 },
-	  { 0x00, 0x12, 0x00, 0x00 },
 	  { 0x00, 0x00, 0x00, 0x00 },
-	}
+	  { 0x12, 0x12, 0x00, 0x00 },
+	  { 0x00, 0x12, 0x12, 0x00 },
+	  { 0x00, 0x00, 0x00, 0x00 },
+	},
   }
 };
 
@@ -222,20 +223,42 @@ int move_right() {
 }
 
 void drop() {
-  while (move_down());
+  while (move_down()) score++;
 }
 
 void next_piece() {
   // end game logic here
-  pp=now%7;
-  py = 0; pr = 0; px = now%(COLS-4); // COLS/2-2;
+  pp=rand()%7;
+  py = 0; pr = 0; px = COLS/2-2;
   if (!is_valid(pp, pr, px, py))
     game = 0;
 }
 
 void rotate() {
-  if (is_valid(pp, (pr+1)%4, px, py))
+  if (is_valid(pp, (pr+1)%4, px, py)) {
     pr = (pr+1)%4;
+    return;
+  }
+  if (is_valid(pp, (pr+1)%4, px-1, py)) {
+	pr = (pr+1)%4;
+	px = px-1;
+	return;
+  }
+  if (is_valid(pp, (pr+1)%4, px+1, py)) {
+  	pr = (pr+1)%4;
+  	px = px+1;
+  	return;
+  }
+  if (is_valid(pp, (pr+1)%4, px-2, py)) {
+  	pr = (pr+1)%4;
+  	px = px-2;
+  	return;
+  }
+  if (is_valid(pp, (pr+1)%4, px+2, py)) {
+	pr = (pr+1)%4;
+	px = px+2;
+	return;
+  }
 }
 
 int is_valid(int p, int r, int x, int y) {
@@ -255,9 +278,75 @@ void commit2board(int p, int r, int x, int y) {
 
   /////////////////////////////////////////////////////////////////////////////
   // TODO: destroy any complete rows!!!
+  flash_complete_rows();
 }
 
-void draw2hardware(volatile unsigned char * base){
-	for(int i = 0; i < 100; i++)
-		base[i] = (((unsigned char)(*(board + 2*i)) & 0x0f) << 4) | ((unsigned char)(*(board + 2*i + 1)) & 0x0f);
+void flash_complete_rows() {
+	for (int i = 0; i < ROWS; i++) {
+		int full = 1;
+		for (int j = 0; j < COLS; j++) {
+			if (!board[i][j]) {
+				full = 0;
+				break;
+			}
+		}
+
+		if (full) {
+			for (int jj = 0; jj < COLS; jj++) {
+				board[i][jj] = WHITE;
+			}
+		}
+	}
+
+	del_white = now;
+}
+
+void delete_rows() {
+	int c = 0;
+	for (int j = 0; j < COLS; j++) {
+		int i = ROWS - 1;
+		c = 0;
+		while (i-c >= 0) {
+			while (board[i-c][j] == WHITE) c++;
+			board[i][j] = board[i-c][j];
+			i--;
+		}
+		while (i >= 0) {
+			board[i][j] = 0x00;
+			i--;
+		}
+	}
+
+	score += c;
+
+	del_white = 0;
+}
+
+void clear_board() {
+	for (int i = 0; i < 10; i++)
+		for (int j = 0; j < 20; j++)
+			board[j][i] = 0x00;
+}
+
+void draw2hardware(volatile unsigned int * base){
+	char p_board[ROWS][COLS];
+	memcpy(p_board, board, ROWS*COLS);
+	for (int i = 0; i < 4; i++)
+		for (int j = 0; j < 4; j++)
+			if (pieces[pp][pr][i][j])
+				p_board[py+i][px+j] = pieces[pp][pr][i][j];
+
+	int block_idx = 0;
+	for (int i = 0; i < 25; i++) {
+		int cur = 0;
+		for (int b = 0; b < 8; b++) {
+			cur |= ( ((p_board[block_idx/10][block_idx%10] & 0x0f)) << (b*4) ) & (0x0f << (4*b));
+			block_idx++;
+//			printf("%d: %02x - %08x\n", block_idx, p_board[block_idx/10][block_idx%10], cur);
+		}
+		base[i] = cur;
+	}
+
+	base[31] = score;
+
 }

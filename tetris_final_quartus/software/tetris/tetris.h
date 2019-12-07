@@ -1,17 +1,20 @@
 #ifndef tetris_h
 #define tetris_h
 
+#include <stdlib.h>
 #include <sys/time.h>
 
 #define ROWS 20
 #define COLS 10
-#define REFRESH 500
-#define REFRESH_KB 100
+#define REFRESH 300
+#define REFRESH_KB 32
 
 #define RED 1
 #define BLUE 2
 #define GREEN 3
 #define YELLOW 4
+
+#define WHITE 0x06
 
 #define UP_KEY 0x52
 #define DOWN_KEY 0x51
@@ -21,7 +24,10 @@
 
 volatile int kb_char;
 volatile int game;
-volatile time_t now;
+volatile unsigned long long now;
+volatile unsigned long long del_white;
+
+volatile unsigned score;
 
 char board[ROWS][COLS];
 
@@ -43,6 +49,12 @@ void next_piece();
 
 void commit2board(int p, int r, int x, int y);
 
-void draw2hardware(volatile unsigned char * base);
+void clear_board();
+
+void delete_rows();
+
+void flash_complete_rows();
+
+void draw2hardware(volatile unsigned int * base);
 
 #endif
