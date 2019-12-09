@@ -61,7 +61,7 @@ module lab8( input               CLOCK_50,
     logic [15:0] hpi_data_in, hpi_data_out;
     logic hpi_r, hpi_w, hpi_cs, hpi_reset;
 	 
-	 logic [2:0] color;
+	 logic [3:0] color;
 
     // Interface between NIOS II and EZ-OTG chip
     hpi_io_intf hpi_io_inst(

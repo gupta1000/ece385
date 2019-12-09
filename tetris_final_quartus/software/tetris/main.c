@@ -16,6 +16,7 @@
 
 #include "system.h"
 #include "alt_types.h"
+#include "time.h"
 #include <unistd.h>  // usleep
 #include "sys/alt_irq.h"
 #include "io_handler.h"
@@ -27,7 +28,7 @@
 
 #include "tetris.h"
 
-volatile unsigned int * TETRIS_PTR = (unsigned char *) 0x01000;
+volatile unsigned int * TETRIS_PTR = (unsigned int *) 0x01000;
 
 //----------------------------------------------------------------------------------------//
 //
@@ -63,9 +64,10 @@ int main(void)
 	unsigned long long last_kb;
 	unsigned long long last_drop;
 	unsigned long long last_rot;
+	unsigned long long last_blink;
 
 	clear_board();
-	draw2hardware(TETRIS_PTR);
+//	draw2hardware(TETRIS_PTR);
 
 	time_t t;
 	srand((unsigned) time(&t));
@@ -576,14 +578,18 @@ int main(void)
 
 		now++;
 
-		if (!game) {
+		if (!game && kb_char == SPACE_KEY) {
 			clear_board();
 			game = 1;
+			blink = 0;
 			next_piece();
 			score = 0;
+			last_drop = now;
 		}
 
-		if (now - last_kb > REFRESH_KB) {
+		rand();
+
+		if (now - last_kb > REFRESH_KB && game) {
 		  last_kb = now;
 
 		  switch (kb_char) {
@@ -607,19 +613,25 @@ int main(void)
 		  draw2hardware(TETRIS_PTR);
 		}
 
-		if (now - last_exe > REFRESH) {
+		if (now - last_exe > REFRESH && game) {
 		  last_exe = now;
 		  move_down();
 
 		  draw2hardware(TETRIS_PTR);
 		}
 
-		if (del_white && now - del_white > REFRESH_KB) {
+		if (now - last_blink > REFRESH_KB*8 && game) {
+		  last_blink = now;
+		  blink = ~blink;
+		}
+
+		if (del_white && now - del_white > REFRESH_KB && game) {
 		  delete_rows();
 		  draw2hardware(TETRIS_PTR);
 		}
 
 		////////////////////////////// END TETRIS //////////////////////////////////
+
 
 	}//end while
 

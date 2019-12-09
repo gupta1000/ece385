@@ -9,12 +9,9 @@
 #define REFRESH 300
 #define REFRESH_KB 32
 
-#define RED 1
-#define BLUE 2
-#define GREEN 3
-#define YELLOW 4
-
-#define WHITE 0x06
+#define WHITE 0x0e
+#define DARK_GRAY 0x0d
+#define LIGHT_GRAY 0x0c
 
 #define UP_KEY 0x52
 #define DOWN_KEY 0x51
@@ -31,11 +28,13 @@ volatile unsigned score;
 
 char board[ROWS][COLS];
 
-int pp, px, py, pr;
+int pp, px, py, pr, sy, blink;
 
 int is_valid(int p, int r, int x, int y);
 
 int move_down();
+
+int shadow();
 
 int move_left();
 

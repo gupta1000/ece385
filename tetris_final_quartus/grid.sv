@@ -1,14 +1,16 @@
 module  grid ( input         			Clk, Reset, frame_clk,
 					input logic [799:0] 	tetris_grid,
                input [9:0]   			DrawX, DrawY,       // Current pixel coordinates
-               output logic[2:0]  	color            // Whether current pixel belongs to ball or background
+               output logic[3:0]  	color            // Whether current pixel belongs to ball or background
               );
 		 
 	logic [9:0] grid_x;
 	logic [9:0] grid_y;
 	logic [39:0] rowdata;
-	logic [2:0] color_in;
+	logic [3:0] color_in;
 
+
+	
 	logic frame_clk_delayed, frame_clk_rising_edge;
 	always_ff @ (posedge Clk) begin
 	frame_clk_delayed <= frame_clk;
@@ -65,18 +67,18 @@ module  grid ( input         			Clk, Reset, frame_clk,
 
 	always_comb
 	begin
-		color_in = 3'b111;
+		color_in = 4'b1111;
 		case (grid_x)
-			10'd0: color_in = rowdata[2:0];
-			10'd1: color_in = rowdata[6:4];
-			10'd2: color_in = rowdata[10:8];
-			10'd3: color_in = rowdata[14:12];
-			10'd4: color_in = rowdata[18:16];
-			10'd5: color_in = rowdata[22:20];
-			10'd6: color_in = rowdata[26:24];
-			10'd7: color_in = rowdata[30:28];
-			10'd8: color_in = rowdata[34:32];
-			10'd9: color_in = rowdata[38:36];
+			10'd0: color_in = rowdata[3:0];
+			10'd1: color_in = rowdata[7:4];
+			10'd2: color_in = rowdata[11:8];
+			10'd3: color_in = rowdata[15:12];
+			10'd4: color_in = rowdata[19:16];
+			10'd5: color_in = rowdata[23:20];
+			10'd6: color_in = rowdata[27:24];
+			10'd7: color_in = rowdata[31:28];
+			10'd8: color_in = rowdata[35:32];
+			10'd9: color_in = rowdata[39:36];
 			default: ;
 		endcase
 	end
